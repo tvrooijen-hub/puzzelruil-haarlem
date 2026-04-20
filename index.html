@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- ═══ SEO ═══ -->
+<title>PuzzelRuil Haarlem — Jan van Haasteren 1000 stukjes ruilen &amp; kopen</title>
+<meta name="description" content="Ruil je voltooide Jan van Haasteren puzzels in Haarlem. Lever in voor tegoed, kies nieuwe puzzels en betaal alleen het verschil. Thuisbezorging of ophalen in Haarlem."/>
+<meta name="keywords" content="Jan van Haasteren puzzel ruilen Haarlem, JvH puzzel tweedehands, puzzels kopen Haarlem, puzzelruil"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://puzzelruil-haarlem.nl/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="nl_NL"/>
+<meta property="og:title" content="PuzzelRuil Haarlem — JvH puzzels ruilen"/>
+<meta property="og:description" content="Lever je voltooide Jan van Haasteren puzzels in voor tegoed en kies nieuwe. Betaal alleen het verschil. Bezorging in Haarlem."/>
+<meta property="og:url" content="https://puzzelruil-haarlem.nl/"/>
+<meta property="og:site_name" content="PuzzelRuil Haarlem"/>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"PuzzelRuil Haarlem",
+  "description":"Ruil Jan van Haasteren puzzels in Haarlem. Lever in voor tegoed, kies nieuwe, betaal het verschil.",
+  "url":"https://puzzelruil-haarlem.nl",
+  "areaServed":{"@type":"City","name":"Haarlem"},
+  "address":{"@type":"PostalAddress","addressLocality":"Haarlem","addressCountry":"NL"},
+  "email":"hallo@puzzelruil-haarlem.nl",
+  "openingHours":"Mo-Sa 10:00-20:00",
+  "priceRange":"€€"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C0392B;--red-light:#fdf0ef;
+  --yellow:#F9CA24;--yellow-dark:#c8a000;
+  --green:#00a67e;--green-light:#e6f7f3;--green-dark:#006e53;
+  --blue:#1a5cb8;
+  --ink:#1e1608;--muted:#6b5c42;
+  --border:#e2d3b3;--cream:#FFF9F0;--paper:#fffdf8;
+  --r:12px;--rl:18px;
+  --sh:0 2px 10px rgba(30,22,8,.09);
+}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+
+/* TOPBAR */
+.topbar{background:var(--red);height:56px;display:flex;align-items:center;padding:0 1.5rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.18);}
+.brand{font-family:'Fredoka One',cursive;color:#fff;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;}
+.brand-pill{background:var(--yellow);color:var(--ink);font-size:.7rem;font-family:'Nunito',sans-serif;font-weight:800;padding:2px 9px;border-radius:20px;}
+.trust-bar{margin-left:auto;background:rgba(255,255,255,.15);border-radius:20px;padding:4px 12px;font-size:.72rem;color:rgba(255,255,255,.9);font-weight:700;}
+
+/* HERO */
+.hero{background:var(--red);padding:2.5rem 1.5rem 4rem;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:44px;background:var(--cream);clip-path:ellipse(56% 100% at 50% 100%);}
+.hero-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:center;}
+.eyebrow{display:inline-block;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:800;padding:3px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.65rem;}
+.hero h1{font-family:'Fredoka One',cursive;font-size:2.4rem;color:#fff;line-height:1.18;margin-bottom:.85rem;}
+.hero h1 em{color:var(--yellow);font-style:normal;}
+.hero-sub{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.65;margin-bottom:1.25rem;}
+.hero-btns{display:flex;gap:.65rem;flex-wrap:wrap;}
+.trust-row{display:flex;gap:1.25rem;margin-top:1.1rem;flex-wrap:wrap;}
+.trust-item{color:rgba(255,255,255,.8);font-size:.78rem;font-weight:700;}
+.btn{display:inline-flex;align-items:center;gap:.35rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.92rem;padding:11px 22px;border-radius:30px;border:none;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 5px 18px rgba(0,0,0,.18);}
+.btn:active{transform:scale(.97);}
+.btn-yellow{background:var(--yellow);color:var(--ink);}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45);}
+.btn-outline:hover{border-color:#fff;}
+.btn-green{background:var(--green);color:#fff;}
+.btn-sm{font-size:.82rem;padding:8px 16px;}
+.price-card{background:#fff;border-radius:var(--rl);padding:1.4rem;box-shadow:0 6px 24px rgba(30,22,8,.13);}
+.price-card-title{font-family:'Fredoka One',cursive;color:var(--red);font-size:1.15rem;text-align:center;margin-bottom:.9rem;}
+.price-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1.5px dashed var(--border);font-size:.92rem;}
+.price-row:last-of-type{border:none;font-weight:800;font-size:1rem;}
+.price-row .l{color:var(--muted);}
+.aha{margin-top:.75rem;background:var(--yellow);border-radius:9px;padding:.6rem .9rem;text-align:center;font-size:.82rem;font-weight:800;color:var(--ink);}
+
+/* LAYOUT */
+.main-grid{display:grid;grid-template-columns:1fr 268px;gap:1.5rem;padding:2.5rem 1.5rem 4rem;max-width:1060px;margin:0 auto;}
+.sec-title{font-family:'Fredoka One',cursive;font-size:1.35rem;color:var(--ink);}
+.sec-sub{font-size:.82rem;color:var(--muted);margin-top:.1rem;margin-bottom:1rem;}
+
+/* PANEL */
+.panel{background:#fff;border-radius:var(--rl);border:1.5px solid var(--border);box-shadow:var(--sh);overflow:hidden;}
+.filter-bar{padding:.75rem 1rem;border-bottom:1.5px solid var(--border);display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;background:var(--paper);}
+.filter-bar input{flex:1;min-width:140px;font-family:'Nunito',sans-serif;font-size:.85rem;padding:7px 12px;border:1.5px solid var(--border);border-radius:20px;background:var(--cream);color:var(--ink);outline:none;}
+.filter-bar input:focus{border-color:var(--red);}
+.filter-bar select{font-family:'Nunito',sans-serif;font-size:.82rem;padding:7px 10px;border:1.5px solid var(--border);border-radius:20px;background:var(--cream);color:var(--ink);outline:none;cursor:pointer;}
+.result-count{font-size:.73rem;color:var(--muted);white-space:nowrap;margin-left:auto;}
+
+/* TABLE */
+.tbl-head{display:grid;grid-template-columns:44px 1fr 88px 70px 84px 88px;gap:.4rem;padding:.5rem 1rem;border-bottom:1.5px solid var(--border);background:var(--cream);}
+.th{font-size:.66rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+.th.r{text-align:right;}
+.th.c{text-align:center;}
+
+/* PUZZLE ROWS */
+.puzzle-list{padding:.25rem 0;}
+.puzzle-row{display:grid;grid-template-columns:44px 1fr 88px 70px 84px 88px;gap:.4rem;align-items:center;padding:.55rem 1rem;border-bottom:1px solid var(--border);transition:background .1s;}
+.puzzle-row:last-child{border-bottom:none;}
+.puzzle-row:hover{background:var(--cream);}
+.puzzle-row.in-cart{background:var(--green-light);}
+
+/* THUMB — SVG fallback baked in */
+.thumb-wrap{width:40px;height:40px;border-radius:6px;overflow:hidden;border:1px solid var(--border);cursor:pointer;flex-shrink:0;position:relative;background:var(--cream);}
+.thumb-wrap:hover::after{content:'🔍';position:absolute;inset:0;background:rgba(0,0,0,.42);display:flex;align-items:center;justify-content:center;font-size:.9rem;border-radius:5px;pointer-events:none;}
+.thumb-img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.thumb-svg{pointer-events:none;}
+.thumb-svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+
+.pname{font-weight:800;font-size:.86rem;line-height:1.3;color:var(--ink);}
+.pname-en{font-size:.71rem;color:var(--muted);font-weight:400;margin-top:.1rem;}
+.serie-badge{display:inline-block;font-size:.59rem;font-weight:800;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.2px;white-space:nowrap;}
+.sb-spec{background:#ede6fb;color:#5b35c0;}
+.sb-std{background:#e6f0fb;color:#1a5cb8;}
+.pieces-val{font-size:.8rem;font-weight:700;color:var(--muted);text-align:center;}
+.price-col{text-align:right;}
+.price-val{font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--red);}
+.stock-val{font-size:.68rem;color:var(--muted);}
+.add-btn{display:block;width:100%;font-family:'Nunito',sans-serif;font-size:.74rem;font-weight:800;padding:6px 0;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .12s;text-align:center;}
+.add-btn:hover{background:var(--green-light);color:var(--green-dark);border-color:var(--green);}
+.add-btn.added{background:var(--green);color:#fff;border-color:var(--green);}
+.no-results{padding:2rem;text-align:center;color:var(--muted);font-size:.88rem;}
+
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-top:1.5px solid var(--border);background:var(--paper);}
+.pag-info{font-size:.78rem;color:var(--muted);}
+.pag-btns{display:flex;gap:.4rem;}
+.pag-btn{font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .12s;}
+.pag-btn:hover:not(:disabled){background:var(--red-light);color:var(--red);border-color:var(--red);}
+.pag-btn:disabled{opacity:.35;cursor:not-allowed;}
+.pag-btn.active{background:var(--red);color:#fff;border-color:var(--red);}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(10,8,4,.82);z-index:300;align-items:center;justify-content:center;padding:1.5rem;}
+.lightbox.open{display:flex;}
+.lightbox-inner{max-width:560px;width:100%;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);position:relative;}
+.lightbox-img-wrap{width:100%;aspect-ratio:4/3;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.lightbox-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.lightbox-img-wrap .lb-svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.lightbox-body{padding:1rem 1.25rem 1.25rem;}
+.lightbox-title{font-family:'Fredoka One',cursive;font-size:1.25rem;color:var(--ink);}
+.lightbox-en{font-size:.82rem;color:var(--muted);margin-top:.1rem;}
+.lightbox-meta{display:flex;gap:.75rem;margin-top:.65rem;flex-wrap:wrap;align-items:center;}
+.lightbox-close{position:absolute;top:.75rem;right:.75rem;background:#fff;border:none;border-radius:50%;width:34px;height:34px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:1;}
+.lb-add-btn{margin-top:.9rem;width:100%;justify-content:center;}
+
+/* TRADE-IN */
+.tradein-panel{background:#fff;border-radius:var(--rl);border:1.5px solid var(--border);box-shadow:var(--sh);margin-top:1.25rem;overflow:hidden;}
+.tradein-head{background:var(--green-light);padding:.8rem 1.1rem;border-bottom:1.5px solid #c3e8dd;}
+.tradein-head .th2{font-family:'Fredoka One',cursive;font-size:1.05rem;color:var(--green-dark);}
+.tradein-hint{font-size:.77rem;color:var(--green-dark);margin-top:.1rem;opacity:.85;}
+.tradein-body{padding:.95rem 1.1rem;}
+.field-lbl{display:block;font-size:.73rem;font-weight:800;color:var(--muted);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.4px;}
+.field-select,.field-input-inline{width:100%;font-family:'Nunito',sans-serif;font-size:.87rem;padding:8px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);color:var(--ink);outline:none;margin-bottom:.75rem;}
+.field-select:focus,.field-input-inline:focus{border-color:var(--green);}
+.inline-name-row{display:none;flex-direction:column;margin-bottom:.75rem;}
+.cond-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.chip{padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;background:transparent;color:var(--muted);transition:all .12s;}
+.chip.c-ok.active{background:var(--green);color:#fff;border-color:var(--green);}
+.chip.c-warn.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow-dark);}
+.chip.c-bad.active{background:#b05050;color:#fff;border-color:#b05050;}
+.est-inline{display:flex;align-items:center;justify-content:space-between;background:var(--green-light);border:1.5px solid #a8dfd0;border-radius:10px;padding:.6rem 1rem;margin-bottom:.75rem;}
+.est-left .el{font-size:.74rem;font-weight:800;color:var(--green-dark);}
+.est-left .en{font-size:.66rem;color:var(--green-dark);opacity:.75;margin-top:.1rem;}
+.est-val{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--green-dark);}
+.trade-items{margin-top:.6rem;}
+.trade-row{display:flex;align-items:center;gap:.55rem;padding:.45rem .6rem;background:var(--green-light);border-radius:8px;margin-bottom:.35rem;border:1px solid #c3e8dd;}
+.trade-row-name{flex:1;font-size:.8rem;font-weight:700;}
+.trade-row-val{font-weight:800;font-size:.82rem;color:var(--green-dark);}
+.trade-row-rm{background:none;border:none;font-size:.85rem;cursor:pointer;color:#9abfb6;padding:2px;}
+.trade-row-rm:hover{color:var(--red);}
+
+/* CART */
+.cart-sticky{position:sticky;top:68px;}
+.cart-box{background:#fff;border-radius:var(--rl);border:1.5px solid var(--border);box-shadow:var(--sh);overflow:hidden;}
+.cart-head{background:var(--blue);padding:.85rem 1.1rem;}
+.cart-head h3{font-family:'Fredoka One',cursive;color:#fff;font-size:1.1rem;}
+.cart-head p{color:rgba(255,255,255,.7);font-size:.72rem;margin-top:.1rem;}
+.cart-body{padding:.9rem;}
+.cart-empty{text-align:center;padding:1.4rem .5rem;}
+.cart-empty .ico{font-size:2rem;margin-bottom:.4rem;}
+.cart-empty p{font-size:.81rem;color:var(--muted);line-height:1.55;}
+.cart-empty strong{display:block;color:var(--ink);}
+.ci{display:flex;align-items:flex-start;gap:.5rem;padding:.4rem 0;border-bottom:1px dashed var(--border);}
+.ci:last-child{border:none;}
+.ci-thumb{width:28px;height:28px;border-radius:4px;flex-shrink:0;overflow:hidden;border:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:center;}
+.ci-thumb img{width:100%;height:100%;object-fit:cover;}
+.ci-info{flex:1;}
+.ci-name{font-size:.77rem;font-weight:800;line-height:1.25;}
+.ci-meta{font-size:.67rem;color:var(--muted);}
+.ci-price{font-size:.77rem;font-weight:800;color:var(--red);white-space:nowrap;}
+.ci-rm{background:none;border:none;font-size:.82rem;cursor:pointer;color:#ccc;padding:2px;flex-shrink:0;}
+.ci-rm:hover{color:var(--red);}
+.cart-sep{height:1px;background:var(--border);margin:.55rem 0;}
+.cart-line{display:flex;justify-content:space-between;font-size:.8rem;padding:.14rem 0;color:var(--muted);}
+.cart-line.credit{color:var(--green-dark);font-weight:700;}
+.cart-saving{background:var(--yellow);border-radius:8px;padding:.5rem .75rem;margin:.55rem 0;display:flex;align-items:center;justify-content:space-between;}
+.cart-saving-lbl{font-size:.68rem;font-weight:800;color:var(--ink);}
+.cart-saving-val{font-family:'Fredoka One',cursive;font-size:1.05rem;color:var(--ink);}
+.cart-due{display:flex;justify-content:space-between;align-items:center;padding:.2rem 0;}
+.cart-due-lbl{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--ink);}
+.cart-due-val{font-family:'Fredoka One',cursive;font-size:1.35rem;color:var(--red);}
+.cart-actions{margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem;}
+.btn-book{width:100%;justify-content:center;background:var(--yellow);color:var(--ink);font-size:.9rem;padding:11px;}
+.btn-book:disabled{opacity:.38;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-clear{width:100%;justify-content:center;background:transparent;color:var(--muted);border:1.5px solid var(--border);font-size:.77rem;padding:7px;border-radius:20px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(20,12,4,.5);z-index:200;align-items:center;justify-content:center;padding:1.5rem;}
+.overlay.open{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:1.75rem;max-width:460px;width:100%;box-shadow:0 14px 50px rgba(0,0,0,.22);position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);}
+.modal h3{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--red);margin-bottom:.2rem;}
+.modal-intro{font-size:.84rem;color:var(--muted);margin-bottom:1rem;}
+.delivery-row{display:flex;gap:.5rem;margin-bottom:1rem;}
+.delivery-btn{flex:1;padding:.65rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:800;cursor:pointer;background:var(--cream);color:var(--muted);transition:all .13s;text-align:center;}
+.delivery-btn.sel{border-color:var(--green);background:var(--green);color:#fff;}
+.slots-lbl{font-size:.74rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.45rem;}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;margin-bottom:1rem;}
+.slot{padding:.6rem .75rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;background:var(--cream);color:var(--ink);transition:all .13s;text-align:left;}
+.slot .day{font-size:.66rem;color:var(--muted);display:block;margin-bottom:.1rem;}
+.slot:hover{border-color:var(--green);background:var(--green-light);}
+.slot.sel{border-color:var(--green);background:var(--green);color:#fff;}
+.slot.sel .day{color:rgba(255,255,255,.8);}
+.modal-address{background:var(--cream);border-radius:9px;padding:.6rem .9rem;font-size:.79rem;border:1px solid var(--border);margin-bottom:1rem;}
+.modal-address strong{display:block;margin-bottom:.15rem;}
+.modal-address span{color:var(--muted);}
+.confirm-success{display:none;text-align:center;padding:1rem 0;}
+.confirm-success .ico{font-size:3rem;margin-bottom:.35rem;}
+.confirm-success h4{font-family:'Fredoka One',cursive;font-size:1.35rem;color:var(--green-dark);margin-bottom:.25rem;}
+.confirm-success p{font-size:.83rem;color:var(--muted);}
+
+/* HOW */
+.how-section{background:#fff;padding:3rem 1.5rem;}
+.how-inner{max-width:1060px;margin:0 auto;}
+.how-title{font-family:'Fredoka One',cursive;font-size:1.7rem;color:var(--red);margin-bottom:.2rem;}
+.how-sub{color:var(--muted);font-size:.87rem;margin-bottom:1.75rem;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.step{text-align:center;padding:1.1rem .75rem;}
+.step-num{width:34px;height:34px;background:var(--red);color:#fff;border-radius:50%;font-family:'Fredoka One',cursive;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto .55rem;}
+.step-ico{font-size:1.75rem;margin-bottom:.4rem;}
+.step h4{font-family:'Fredoka One',cursive;font-size:.95rem;margin-bottom:.25rem;}
+.step p{font-size:.77rem;color:var(--muted);line-height:1.55;}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:1.25rem;font-size:.77rem;}
+footer a{color:var(--yellow);text-decoration:none;}
+
+@media(max-width:860px){
+  .hero-inner,.main-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .cart-sticky{position:static;}
+  .trust-bar{display:none;}
+  .tbl-head{display:none;}
+  .puzzle-row{grid-template-columns:40px 1fr auto auto;grid-template-rows:auto auto;row-gap:.25rem;}
+  .col-serie{grid-column:2;grid-row:2;}
+  .col-pieces{display:none;}
+  .col-price{grid-column:3;grid-row:1;text-align:right;}
+  .col-action{grid-column:4;grid-row:1/span 2;align-self:center;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">🧩 PuzzelRuil Haarlem <span class="brand-pill">JvH collectie</span></div>
+  <div class="trust-bar">✅ Actief in Haarlem · 50+ puzzels geruild</div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Voor JvH-fans in Haarlem</div>
+      <h1>Ruil je puzzel —<br><em>betaal alleen het verschil</em></h1>
+      <p class="hero-sub">Lever je voltooide Jan van Haasteren puzzels in voor tegoed en kies nieuwe. Geen Marktplaats-gedoe. Ophalen kan, <strong>thuisbezorgen nog liever.</strong></p>
+      <div class="hero-btns">
+        <a class="btn btn-yellow" href="#app">🔍 Bekijk aanbod</a>
+        <a class="btn btn-outline" href="#inleveren">📦 Inleveren voor tegoed</a>
+      </div>
+      <div class="trust-row">
+        <span class="trust-item">✅ 50+ puzzels geruild</span>
+        <span class="trust-item">🚲 Bezorging in Haarlem</span>
+        <span class="trust-item">⭐ Actief sinds 2024</span>
+      </div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-title">Concreet voorbeeld</div>
+      <div class="price-row"><span class="l">3 nieuwe puzzels</span><span>€ 22,50</span></div>
+      <div class="price-row"><span class="l">3 ingeleverd tegoed</span><span>− € 15,00</span></div>
+      <div class="price-row"><span class="l">Jij betaalt</span><strong style="color:var(--red)">€ 7,50</strong></div>
+      <div class="aha">💡 i.p.v. ± € 20,- per stuk elders — jij bespaart</div>
+    </div>
+  </div>
+</section>
+
+<div id="app" class="main-grid">
+  <div>
+    <div class="sec-title">Beschikbaar aanbod</div>
+    <div class="sec-sub">Klik op een miniatuur voor een grotere afbeelding. Klik "+ Wil ik" om toe te voegen aan je selectie.</div>
+
+    <div class="panel">
+      <div class="filter-bar">
+        <input id="searchInput" placeholder="🔍 Zoek op naam (NL of EN)…" aria-label="Zoek op puzzelnaam"/>
+        <select id="seriesFilter" aria-label="Filter op serie">
+          <option value="all">Alle series</option>
+          <option value="Specials">Specials</option>
+          <option value="Standaard Collectie">Standaard Collectie</option>
+        </select>
+        <select id="piecesFilter" aria-label="Filter op stukjes" title="Meer aantallen volgen later">
+          <option value="1000">1000 stukjes</option>
+        </select>
+        <span class="result-count" id="resultCount" aria-live="polite"></span>
+      </div>
+
+      <div class="tbl-head" role="rowheader">
+        <div class="th"></div>
+        <div class="th">Naam</div>
+        <div class="th">Serie</div>
+        <div class="th c">Stukjes</div>
+        <div class="th r">Prijs</div>
+        <div class="th c">Actie</div>
+      </div>
+
+      <div class="puzzle-list" id="puzzleList" role="list"></div>
+
+      <div class="pagination" id="pagination">
+        <span class="pag-info" id="pagInfo"></span>
+        <div class="pag-btns" id="pagBtns"></div>
+      </div>
+    </div>
+
+    <div class="tradein-panel" id="inleveren">
+      <div class="tradein-head">
+        <div class="th2">📦 Heb je puzzels liggen? Lever ze in voor tegoed</div>
+        <div class="tradein-hint">Optioneel — je kunt ook gewoon kiezen en later inleveren bij bezorging</div>
+      </div>
+      <div class="tradein-body">
+        <label class="field-lbl" for="tradeSelect">Welke puzzel lever je in?</label>
+        <select class="field-select" id="tradeSelect">
+          <option value="">— Kies een puzzel —</option>
+        </select>
+        <div class="inline-name-row" id="nameRow">
+          <label class="field-lbl" for="customName">Naam van de puzzel</label>
+          <input class="field-input-inline" id="customName" placeholder="bijv. De Boerderij" />
+        </div>
+        <label class="field-lbl">Staat van de puzzel</label>
+        <div class="cond-chips" id="condChips" role="group" aria-label="Staat kiezen">
+          <button class="chip c-ok active" data-val="5">✨ Prima — compleet &amp; rookvrij</button>
+          <button class="chip c-ok" data-val="4">👍 Goed — lichte slijtage</button>
+          <button class="chip c-warn" data-val="3">🙂 Oké — max. 5 stukjes mist</button>
+          <button class="chip c-bad" data-val="1.5">😬 Matig — rooklucht/beschadigd</button>
+        </div>
+        <div class="est-inline">
+          <div class="est-left">
+            <div class="el">Je ontvangt als tegoed</div>
+            <div class="en">95% van inleveringen krijgt dit bedrag</div>
+          </div>
+          <div class="est-val" id="estVal">€ 5,00</div>
+        </div>
+        <button class="btn btn-green btn-sm" id="addTradeBtn" style="width:100%;justify-content:center;">➕ Tegoed toevoegen</button>
+        <div class="trade-items" id="tradeItems"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-sticky">
+    <div class="cart-box">
+      <div class="cart-head"><h3>Jouw selectie 🛒</h3><p>Tegoed wordt automatisch afgetrokken</p></div>
+      <div class="cart-body">
+        <div id="cartContent">
+          <div class="cart-empty"><div class="ico">🧩</div><p><strong>Kies hierboven je eerste puzzel 👆</strong></p></div>
+        </div>
+        <div id="cartTotals" style="display:none;">
+          <div class="cart-sep"></div>
+          <div class="cart-line"><span>Puzzels</span><span id="ctSub">€ 0,00</span></div>
+          <div class="cart-line credit" id="ctCredRow" style="display:none;"><span>Tegoed inlevering</span><span id="ctCred">− € 0,00</span></div>
+          <div class="cart-saving" id="ctSavingRow" style="display:none;">
+            <span class="cart-saving-lbl">🎉 Besparing t.o.v. winkelprijs</span>
+            <span class="cart-saving-val" id="ctSaving">€ 0,00</span>
+          </div>
+          <div class="cart-sep"></div>
+          <div class="cart-due"><span class="cart-due-lbl">Te betalen</span><span class="cart-due-val" id="ctDue">€ 0,00</span></div>
+        </div>
+        <div class="cart-actions">
+          <button class="btn btn-book" id="bookBtn" disabled>📅 Moment kiezen</button>
+          <button class="btn-clear" id="clearBtn">Selectie wissen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="how-section">
+  <div class="how-inner">
+    <div class="how-title">Hoe werkt het?</div>
+    <div class="how-sub">In vier stappen van oud naar nieuw.</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-ico">🔍</div><h4>Kies puzzels</h4><p>Blader door het aanbod. Klik op een afbeelding om hem te vergroten.</p></div>
+      <div class="step"><div class="step-num">2</div><div class="step-ico">📦</div><h4>Lever in voor tegoed</h4><p>Geef de staat op. Je ziet direct het tegoed.</p></div>
+      <div class="step"><div class="step-num">3</div><div class="step-ico">💰</div><h4>Betaal het verschil</h4><p>Tegoed gaat er direct af. Bijbetalen via Tikkie of contant.</p></div>
+      <div class="step"><div class="step-num">4</div><div class="step-ico">🚲</div><h4>Bezorgen of ophalen</h4><p>Ik breng ze graag bij je thuis in Haarlem.</p></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>PuzzelRuil Haarlem — particulier initiatief voor Jan van Haasteren fans · <a href="mailto:hallo@puzzelruil-haarlem.nl">hallo@puzzelruil-haarlem.nl</a> · Actief in Haarlem sinds 2024</p>
+  <p style="margin-top:.3rem;font-size:.7rem;">Puzzels tweedehands · Geen commercieel bedrijf · 50+ tevreden ruilers</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Puzzeldetails">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lbClose" aria-label="Sluiten">✕</button>
+    <div class="lightbox-img-wrap" id="lbImgWrap"></div>
+    <div class="lightbox-body">
+      <div class="lightbox-title" id="lbTitle"></div>
+      <div class="lightbox-en" id="lbEn"></div>
+      <div class="lightbox-meta" id="lbMeta"></div>
+      <button class="btn btn-green lb-add-btn" id="lbAddBtn">+ Wil ik — toevoegen aan selectie</button>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Sluiten">✕</button>
+    <h3>📅 Kies een moment</h3>
+    <p class="modal-intro">Bezorging aan huis of zelf ophalen?</p>
+    <div class="delivery-row">
+      <button class="delivery-btn sel" data-d="bezorgen">🚲 Thuisbezorgen</button>
+      <button class="delivery-btn" data-d="ophalen">🏠 Zelf ophalen</button>
+    </div>
+    <div class="modal-address" id="modalAddress">
+      <strong>Bezorging in Haarlem</strong>
+      <span>Ik kom naar jou — adres bevestig je hierna via WhatsApp</span>
+    </div>
+    <div class="slots-lbl">Kies een tijdslot</div>
+    <div class="slots" id="slotsGrid"></div>
+    <div class="confirm-success" id="confirmSuccess">
+      <div class="ico">✅</div>
+      <h4>Geregeld!</h4>
+      <p>Je hoort snel van me ter bevestiging.<br>Veel puzzelplezier! 🧩</p>
+    </div>
+    <button class="btn btn-green" id="confirmBtn" style="width:100%;justify-content:center;font-size:.9rem;">✅ Bevestigen</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── SUPABASE ──
+const { createClient } = supabase;
+const sb = createClient(
+  'https://chefqbjxoivnrpvvzvbn.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZWZxYmp4b2l2bnJwdnZ6dmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2Mjk0NTQsImV4cCI6MjA5MjIwNTQ1NH0.Hj6Kyr1bXJJhzi_HBGf8APK2B400WvVFTcz6Yfn6p3s'
+);
+const STORAGE_URL = 'https://chefqbjxoivnrpvvzvbn.supabase.co/storage/v1/object/public/puzzle-images/';
+
+// ── SVG PLACEHOLDER per serie ──
+const SVG_SPEC = `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="40" fill="#ede6fb"/>
+  <path d="M10 14 Q14 10 18 14 L18 10 Q22 6 26 10 L30 10 L30 22 Q34 18 30 22 L30 30 L18 30 L18 26 Q14 30 10 26 Z" fill="#5b35c0" opacity=".35"/>
+  <text x="20" y="37" text-anchor="middle" font-size="6" fill="#5b35c0" font-weight="bold" font-family="sans-serif">Specials</text>
+</svg>`;
+const SVG_STD = `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="40" fill="#e6f0fb"/>
+  <path d="M10 14 Q14 10 18 14 L18 10 Q22 6 26 10 L30 10 L30 22 Q34 18 30 22 L30 30 L18 30 L18 26 Q14 30 10 26 Z" fill="#1a5cb8" opacity=".35"/>
+  <text x="20" y="37" text-anchor="middle" font-size="5" fill="#1a5cb8" font-weight="bold" font-family="sans-serif">Standaard</text>
+</svg>`;
+
+const SVG_LB_SPEC = `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#ede6fb"/>
+  <path d="M120 110 Q150 80 180 110 L180 80 Q210 50 240 80 L280 80 L280 160 Q310 130 280 160 L280 220 L180 220 L180 190 Q150 220 120 190 Z" fill="#5b35c0" opacity=".25"/>
+  <text x="200" y="265" text-anchor="middle" font-size="20" fill="#5b35c0" font-weight="bold" font-family="sans-serif">Specials</text>
+  <text x="200" y="150" text-anchor="middle" font-size="13" fill="#5b35c0" opacity=".5" font-family="sans-serif">Afbeelding volgt</text>
+</svg>`;
+const SVG_LB_STD = `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#e6f0fb"/>
+  <path d="M120 110 Q150 80 180 110 L180 80 Q210 50 240 80 L280 80 L280 160 Q310 130 280 160 L280 220 L180 220 L180 190 Q150 220 120 190 Z" fill="#1a5cb8" opacity=".25"/>
+  <text x="200" y="265" text-anchor="middle" font-size="20" fill="#1a5cb8" font-weight="bold" font-family="sans-serif">Standaard Collectie</text>
+  <text x="200" y="150" text-anchor="middle" font-size="13" fill="#1a5cb8" opacity=".5" font-family="sans-serif">Afbeelding volgt</text>
+</svg>`;
+
+function thumbSvg(serie){return serie==='Specials'?SVG_SPEC:SVG_STD;}
+function lbSvg(serie){return serie==='Specials'?SVG_LB_SPEC:SVG_LB_STD;}
+
+// ── PUZZELDATA — live uit Supabase ──
+let ALL_PUZZELS = [];
+
+async function loadPuzzels() {
+  // Toon laadmelding
+  document.getElementById('puzzleList').innerHTML = '<div class="no-results">Puzzels laden…</div>';
+
+  const { data, error } = await sb
+    .from('puzzels')
+    .select('*')
+    .eq('active', true)
+    .order('nl');
+
+  if (error) {
+    console.error('Supabase fout:', error);
+    document.getElementById('puzzleList').innerHTML = '<div class="no-results">Kon puzzels niet laden. Probeer opnieuw.</div>';
+    return;
+  }
+
+  ALL_PUZZELS = data;
+  console.log('Eerste puzzel uit Supabase:', JSON.stringify(data[0]));
+  populateTradeSelect();
+  applyFilters();
+  renderCart();
+}
+
+function imgUrl(p) {
+  // Als img_url ingevuld is in Supabase → gebruik die
+  if (p.img_url) return p.img_url;
+  // Anders bouw URL op basis van slug naar Storage bucket
+  if (p.slug) return STORAGE_URL + p.slug + '.jpg';
+  return null;
+}
+
+const PAGE_SIZE = 10;
+const SLOTS=[
+  {day:"Ma 21 apr",time:"10:00 – 12:00"},
+  {day:"Ma 21 apr",time:"14:00 – 17:00"},
+  {day:"Di 22 apr",time:"10:00 – 12:00"},
+  {day:"Di 22 apr",time:"18:00 – 20:00"},
+  {day:"Wo 23 apr",time:"10:00 – 12:00"},
+  {day:"Do 24 apr",time:"14:00 – 17:00"},
+];
+
+const RETAIL=19.99;
+let cart=[],trades=[],credit=0,condVal=5,selSlot=null,lbPuzzle=null;
+let filtered=[];
+let currentPage=1;
+const fmt=n=>'€ '+n.toFixed(2).replace('.',',');
+
+function serieBadge(s){
+  return s==='Specials'
+    ?`<span class="serie-badge sb-spec">Specials</span>`
+    :`<span class="serie-badge sb-std">Standaard</span>`;
+}
+
+// ── FILTER + PAGINATE ──
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase().trim();
+  const ser=document.getElementById('seriesFilter').value;
+  filtered=ALL_PUZZELS.filter(p=>{
+    if(q&&!p.nl.toLowerCase().includes(q)&&!p.en.toLowerCase().includes(q))return false;
+    if(ser!=='all'&&p.serie!==ser)return false;
+    return true;
+  });
+  currentPage=1;
+  renderList();
+  renderPagination();
+}
+
+function renderList(){
+  const list=document.getElementById('puzzleList');
+  const total=filtered.length;
+  document.getElementById('resultCount').textContent=total+' puzzel'+(total!==1?'s':'');
+
+  if(!total){
+    list.innerHTML='<div class="no-results">Geen puzzels gevonden — probeer een andere zoekterm</div>';
+    document.getElementById('pagination').style.display='none';
+    return;
+  }
+
+  const start=(currentPage-1)*PAGE_SIZE;
+  const page=filtered.slice(start,start+PAGE_SIZE);
+  document.getElementById('pagination').style.display='flex';
+
+  list.innerHTML=page.map(p=>{
+    const inCart=!!cart.find(c=>String(c.id)===String(p.id));
+    const url=imgUrl(p);
+    const thumbHtml=url
+      ?`<img class="thumb-img" src="${url}" alt="${p.nl}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="thumb-svg" style="display:none">${thumbSvg(p.serie)}</div>`
+      :`<div class="thumb-svg">${thumbSvg(p.serie)}</div>`;
+    return `<div class="puzzle-row${inCart?' in-cart':''}" role="listitem">
+      <div class="thumb-wrap" data-lb="${p.id}" title="Klik voor grotere afbeelding" role="button" tabindex="0" aria-label="${p.nl} — klik voor details">
+        ${thumbHtml}
+      </div>
+      <div class="col-name">
+        <div class="pname">${p.nl}</div>
+        <div class="pname-en">${p.en}</div>
+      </div>
+      <div class="col-serie">${serieBadge(p.serie)}</div>
+      <div class="col-pieces pieces-val">${p.pieces}</div>
+      <div class="col-price price-col">
+        <div class="price-val">${fmt(p.price)}</div>
+        <div class="stock-val">${p.stock}× beschikb.</div>
+      </div>
+      <div class="col-action">
+        <button class="add-btn${inCart?' added':''}" data-id="${p.id}" aria-label="${inCart?'Verwijder uit selectie':'Voeg toe aan selectie'}: ${p.nl}">${inCart?'✓ Gekozen':'+ Wil ik'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderPagination(){
+  const total=filtered.length;
+  const totalPages=Math.ceil(total/PAGE_SIZE);
+  const start=(currentPage-1)*PAGE_SIZE+1;
+  const end=Math.min(currentPage*PAGE_SIZE,total);
+  document.getElementById('pagInfo').textContent=`${start}–${end} van ${total}`;
+
+  const btns=document.getElementById('pagBtns');
+  // Show: prev, up to 5 page numbers, next
+  let html=`<button class="pag-btn" id="pagPrev" ${currentPage===1?'disabled':''} aria-label="Vorige pagina">← Vorige</button>`;
+  const range=pageRange(currentPage,totalPages);
+  range.forEach(n=>{
+    if(n==='…') html+=`<span style="padding:6px 4px;font-size:.78rem;color:var(--muted);">…</span>`;
+    else html+=`<button class="pag-btn${n===currentPage?' active':''}" data-page="${n}" aria-label="Pagina ${n}" aria-current="${n===currentPage?'page':'false'}">${n}</button>`;
+  });
+  html+=`<button class="pag-btn" id="pagNext" ${currentPage===totalPages?'disabled':''} aria-label="Volgende pagina">Volgende →</button>`;
+  btns.innerHTML=html;
+}
+
+function pageRange(cur,total){
+  if(total<=7) return Array.from({length:total},(_,i)=>i+1);
+  if(cur<=4) return [1,2,3,4,5,'…',total];
+  if(cur>=total-3) return [1,'…',total-4,total-3,total-2,total-1,total];
+  return [1,'…',cur-1,cur,cur+1,'…',total];
+}
+
+document.getElementById('pagBtns').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-page]');
+  if(btn){currentPage=+btn.dataset.page;renderList();renderPagination();window.scrollTo({top:document.getElementById('app').offsetTop-70,behavior:'smooth'});return;}
+  if(e.target.id==='pagPrev'||e.target.closest('#pagPrev')){currentPage--;renderList();renderPagination();window.scrollTo({top:document.getElementById('app').offsetTop-70,behavior:'smooth'});}
+  if(e.target.id==='pagNext'||e.target.closest('#pagNext')){currentPage++;renderList();renderPagination();window.scrollTo({top:document.getElementById('app').offsetTop-70,behavior:'smooth'});}
+});
+
+document.getElementById('searchInput').addEventListener('input',applyFilters);
+document.getElementById('seriesFilter').addEventListener('change',applyFilters);
+
+// ── PUZZLE INTERACTIONS ──
+document.getElementById('puzzleList').addEventListener('click',e=>{
+  // Zoek omhoog naar thumb-wrap OF naar add-btn
+  const lb=e.target.closest('[data-lb]');
+  const btn=e.target.closest('[data-id]');
+  if(lb){
+    const id=lb.dataset.lb;
+    openLightbox(id);
+    return;
+  }
+  if(btn){
+    const id=btn.dataset.id;
+    toggleCart(id);
+  }
+});
+document.getElementById('puzzleList').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){const lb=e.target.closest('[data-lb]');if(lb)openLightbox(+lb.dataset.lb);}
+});
+
+function toggleCart(id){
+  const p=ALL_PUZZELS.find(x=>String(x.id)===String(id));
+  const idx=cart.findIndex(c=>String(c.id)===String(id));
+  if(idx>=0)cart.splice(idx,1);else if(p)cart.push(p);
+  // applyFilters herberekent filtered én rendert opnieuw
+  applyFilters();
+  renderCart();
+}
+
+// ── LIGHTBOX ──
+function openLightbox(id){
+  const p=ALL_PUZZELS.find(x=>String(x.id)===String(id));
+  if(!p){console.warn('Puzzel niet gevonden voor id:',id);return;}
+  lbPuzzle=p;
+  const lbUrl=imgUrl(p);
+  document.getElementById('lbImgWrap').innerHTML=lbUrl
+    ?`<img src="${lbUrl}" alt="${p.nl}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="lb-svg" style="display:none">${lbSvg(p.serie)}</div>`
+    :`<div class="lb-svg">${lbSvg(p.serie)}</div>`;
+  document.getElementById('lbTitle').textContent=p.nl;
+  document.getElementById('lbEn').textContent=p.en;
+  document.getElementById('lbMeta').innerHTML=`${serieBadge(p.serie)}<span style="font-size:.78rem;color:var(--muted);">${p.pieces} stukjes</span><span style="font-size:.78rem;font-weight:800;color:var(--red);">${fmt(p.price)}</span><span style="font-size:.72rem;color:var(--muted);">${p.stock}× beschikbaar</span>`;
+  const inCart=!!cart.find(c=>String(c.id)===String(id));
+  const btn=document.getElementById('lbAddBtn');
+  if(inCart){btn.textContent='✓ Al in je selectie';btn.style.background='var(--muted)';}
+  else{btn.textContent='+ Wil ik — toevoegen aan selectie';btn.style.background='var(--green)';}
+  document.getElementById('lightbox').classList.add('open');
+}
+document.getElementById('lbClose').addEventListener('click',()=>document.getElementById('lightbox').classList.remove('open'));
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))document.getElementById('lightbox').classList.remove('open');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('open');document.getElementById('overlay').classList.remove('open');}});
+document.getElementById('lbAddBtn').addEventListener('click',()=>{
+  if(!lbPuzzle)return;
+  toggleCart(lbPuzzle.id);
+  document.getElementById('lightbox').classList.remove('open');
+});
+
+// ── TRADE-IN ──
+function populateTradeSelect(){
+  const sel=document.getElementById('tradeSelect');
+  sel.innerHTML='<option value="">— Kies een puzzel —</option>';
+  ALL_PUZZELS.forEach(p=>{
+    const o=document.createElement('option');
+    o.value=p.id;o.textContent=p.nl;
+    sel.appendChild(o);
+  });
+  const other=document.createElement('option');
+  other.value='other';other.textContent='✏️ Staat er niet tussen…';
+  sel.appendChild(other);
+}
+document.getElementById('tradeSelect').addEventListener('change',e=>{
+  document.getElementById('nameRow').style.display=e.target.value==='other'?'flex':'none';
+  if(e.target.value==='other')document.getElementById('customName').focus();
+});
+document.getElementById('condChips').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-val]');if(!btn)return;
+  document.querySelectorAll('#condChips .chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  condVal=parseFloat(btn.dataset.val);
+  document.getElementById('estVal').textContent=fmt(condVal);
+});
+document.getElementById('addTradeBtn').addEventListener('click',()=>{
+  const sel=document.getElementById('tradeSelect');
+  const id=sel.value;
+  const p=ALL_PUZZELS.find(x=>x.id==id);
+  let name;
+  if(id==='other'){name=document.getElementById('customName').value.trim()||'Eigen puzzel';}
+  else if(p){name=p.nl;}
+  else{name='JvH puzzel';}
+  if(id&&trades.find(t=>t.id===id))return;
+  trades.push({id:id||''+Date.now(),name,val:condVal});
+  credit=trades.reduce((a,t)=>a+t.val,0);
+  sel.value='';
+  document.getElementById('nameRow').style.display='none';
+  document.getElementById('customName').value='';
+  condVal=5;
+  document.querySelectorAll('#condChips .chip').forEach((c,i)=>c.classList.toggle('active',i===0));
+  document.getElementById('estVal').textContent=fmt(5);
+  renderTrades();renderCart();
+});
+function renderTrades(){
+  document.getElementById('tradeItems').innerHTML=trades.map((t,i)=>`
+    <div class="trade-row">
+      <span class="trade-row-name">${t.name}</span>
+      <span class="trade-row-val">+ ${fmt(t.val)}</span>
+      <button class="trade-row-rm" data-rm="${i}" aria-label="Verwijder ${t.name}">✕</button>
+    </div>`).join('');
+}
+document.getElementById('tradeItems').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-rm]');if(!btn)return;
+  trades.splice(+btn.dataset.rm,1);
+  credit=trades.reduce((a,t)=>a+t.val,0);
+  renderTrades();renderCart();
+});
+
+// ── CART ──
+function renderCart(){
+  const content=document.getElementById('cartContent');
+  const totals=document.getElementById('cartTotals');
+  const bookBtn=document.getElementById('bookBtn');
+  if(!cart.length){
+    content.innerHTML='<div class="cart-empty"><div class="ico">🧩</div><p><strong>Kies hierboven je eerste puzzel 👆</strong></p></div>';
+    totals.style.display='none';bookBtn.disabled=true;return;
+  }
+  content.innerHTML=cart.map(p=>{
+    const url=imgUrl(p);
+    const ciThumb=url
+      ?`<div class="ci-thumb"><img src="${url}" alt="${p.nl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" /></div>`
+      :`<div class="ci-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">${thumbSvg(p.serie)}</div></div>`;
+    return `<div class="ci">
+      ${ciThumb}
+      <div class="ci-info">
+        <div class="ci-name">${p.nl}</div>
+        <div class="ci-meta">${p.serie}</div>
+      </div>
+      <div class="ci-price">${fmt(p.price)}</div>
+      <button class="ci-rm" data-rm="${p.id}" aria-label="Verwijder ${p.nl}">✕</button>
+    </div>`;
+  }).join('');
+  const sub=cart.reduce((a,p)=>a+p.price,0);
+  const cred=Math.min(credit,sub);
+  const due=Math.max(0,sub-cred);
+  const saving=cred+(cart.length*RETAIL-sub);
+  document.getElementById('ctSub').textContent=fmt(sub);
+  document.getElementById('ctCred').textContent='− '+fmt(cred);
+  document.getElementById('ctDue').textContent=fmt(due);
+  document.getElementById('ctCredRow').style.display=cred>0?'flex':'none';
+  const savRow=document.getElementById('ctSavingRow');
+  if(saving>0){savRow.style.display='flex';document.getElementById('ctSaving').textContent=fmt(saving);}
+  else savRow.style.display='none';
+  totals.style.display='block';
+  bookBtn.disabled=false;
+}
+document.getElementById('cartContent').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-rm]');if(!btn)return;
+  cart=cart.filter(c=>String(c.id)!==btn.dataset.rm);
+  applyFilters();renderCart();
+});
+document.getElementById('clearBtn').addEventListener('click',()=>{cart=[];applyFilters();renderCart();});
+
+// ── BOOKING MODAL ──
+document.getElementById('bookBtn').addEventListener('click',()=>{
+  if(!cart.length)return;
+  selSlot=null;renderSlots();
+  document.getElementById('confirmSuccess').style.display='none';
+  document.getElementById('confirmBtn').style.display='flex';
+  document.getElementById('overlay').classList.add('open');
+});
+document.getElementById('modalClose').addEventListener('click',()=>document.getElementById('overlay').classList.remove('open'));
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');});
+document.querySelectorAll('[data-d]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-d]').forEach(b=>b.classList.remove('sel'));
+    btn.classList.add('sel');
+    const addr=document.getElementById('modalAddress');
+    addr.innerHTML=btn.dataset.d==='bezorgen'
+      ?'<strong>Bezorging in Haarlem</strong><span>Ik kom naar jou — adres via WhatsApp</span>'
+      :'<strong>Ophaaladres</strong><span>Haarlem Centrum — exacte adres na bevestiging</span>';
+  });
+});
+function renderSlots(){
+  document.getElementById('slotsGrid').innerHTML=SLOTS.map((s,i)=>`
+    <button class="slot${selSlot===i?' sel':''}" data-slot="${i}">
+      <span class="day">${s.day}</span>${s.time}
+    </button>`).join('');
+}
+document.getElementById('slotsGrid').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-slot]');if(!btn)return;
+  selSlot=+btn.dataset.slot;renderSlots();
+});
+document.getElementById('confirmBtn').addEventListener('click',()=>{
+  if(selSlot===null){alert('Kies eerst een tijdslot!');return;}
+  document.getElementById('confirmSuccess').style.display='block';
+  document.getElementById('confirmBtn').style.display='none';
+});
+
+// ── INIT ──
+// Data komt live uit Supabase — populateTradeSelect en applyFilters
+// worden aangeroepen vanuit loadPuzzels() zodra data binnen is
+loadPuzzels();
+</script>
+</body>
+</html>
