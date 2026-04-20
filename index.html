@@ -9,6 +9,7 @@
 <meta name="description" content="Ruil je voltooide Jan van Haasteren puzzels in Haarlem. Lever in voor tegoed, kies nieuwe puzzels en betaal alleen het verschil. Thuisbezorging of ophalen in Haarlem."/>
 <meta name="keywords" content="Jan van Haasteren puzzel ruilen Haarlem, JvH puzzel tweedehands, puzzels kopen Haarlem, puzzelruil"/>
 <meta name="robots" content="index, follow"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="canonical" href="https://puzzelruil-haarlem.nl/"/>
 
 <!-- Open Graph -->
@@ -171,6 +172,14 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);mi
 .est-left .el{font-size:.74rem;font-weight:800;color:var(--green-dark);}
 .est-left .en{font-size:.66rem;color:var(--green-dark);opacity:.75;margin-top:.1rem;}
 .est-val{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--green-dark);}
+.est-val-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:.15rem;}
+.est-korting{font-size:.65rem;color:#b05050;font-weight:700;display:none;}
+/* TOOLTIP */
+.tooltip-wrap{position:relative;display:inline-flex;align-items:center;gap:.3rem;cursor:help;}
+.tooltip-icon{width:14px;height:14px;background:var(--green-dark);color:#fff;border-radius:50%;font-size:.6rem;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;opacity:.7;}
+.tooltip-box{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:var(--ink);color:#fff;font-size:.72rem;border-radius:8px;padding:.5rem .75rem;width:220px;line-height:1.5;z-index:50;font-weight:400;}
+.tooltip-box::after{content:'';position:absolute;top:100%;left:14px;border:5px solid transparent;border-top-color:var(--ink);}
+.tooltip-wrap:hover .tooltip-box{display:block;}
 .trade-items{margin-top:.6rem;}
 .trade-row{display:flex;align-items:center;gap:.55rem;padding:.45rem .6rem;background:var(--green-light);border-radius:8px;margin-bottom:.35rem;border:1px solid #c3e8dd;}
 .trade-row-name{flex:1;font-size:.8rem;font-weight:700;}
@@ -254,16 +263,58 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;paddin
 footer a{color:var(--yellow);text-decoration:none;}
 
 @media(max-width:860px){
+  /* LAYOUT */
   .hero-inner,.main-grid{grid-template-columns:1fr;}
+  .hero{padding:1.75rem 1rem 3.5rem;}
+  .hero h1{font-size:1.9rem;}
+  .hero-sub{font-size:.9rem;}
+  .main-grid{padding:1.5rem 1rem 3rem;}
   .steps{grid-template-columns:1fr 1fr;}
   .cart-sticky{position:static;}
   .trust-bar{display:none;}
+
+  /* FILTERBAR — verticaal stapelen */
+  .filter-bar{flex-direction:column;gap:.4rem;padding:.65rem .75rem;}
+  .filter-bar input{width:100%;}
+  .filter-bar select{width:100%;}
+  .result-count{margin-left:0;font-size:.75rem;}
+
+  /* TABEL — verberg header, simpele rijen */
   .tbl-head{display:none;}
-  .puzzle-row{grid-template-columns:40px 1fr auto auto;grid-template-rows:auto auto;row-gap:.25rem;}
-  .col-serie{grid-column:2;grid-row:2;}
+  .puzzle-row{
+    grid-template-columns:44px 1fr auto;
+    grid-template-rows:auto auto;
+    row-gap:.2rem;
+    padding:.6rem .75rem;
+  }
+  .col-name{grid-column:2;grid-row:1;}
+  .col-serie{grid-column:2;grid-row:2;display:flex;align-items:center;gap:.35rem;}
   .col-pieces{display:none;}
   .col-price{grid-column:3;grid-row:1;text-align:right;}
-  .col-action{grid-column:4;grid-row:1/span 2;align-self:center;}
+  .col-action{grid-column:3;grid-row:2;text-align:right;}
+  .add-btn{padding:5px 10px;font-size:.72rem;}
+  .price-val{font-size:.88rem;}
+  .stock-val{font-size:.65rem;}
+  .pname{font-size:.83rem;}
+  .pname-en{font-size:.68rem;}
+
+  /* PAGINERING */
+  .pagination{flex-direction:column;gap:.4rem;align-items:center;}
+  .pag-btns{flex-wrap:wrap;justify-content:center;}
+
+  /* INLEVEREN */
+  .tradein-body{padding:.75rem;}
+  .cond-chips{gap:.3rem;}
+  .chip{font-size:.72rem;padding:5px 9px;}
+
+  /* HOW */
+  .how-section{padding:2rem 1rem;}
+  .steps{grid-template-columns:1fr 1fr;gap:.65rem;}
+  .step{padding:.75rem .5rem;}
+
+  /* CART */
+  .cart-box{margin-top:0;}
+  .cart-head{padding:.7rem 1rem;}
 }
 </style>
 </head>
@@ -295,7 +346,7 @@ footer a{color:var(--yellow);text-decoration:none;}
       <div class="price-row"><span class="l">3 nieuwe puzzels</span><span>€ 22,50</span></div>
       <div class="price-row"><span class="l">3 ingeleverd tegoed</span><span>− € 15,00</span></div>
       <div class="price-row"><span class="l">Jij betaalt</span><strong style="color:var(--red)">€ 7,50</strong></div>
-      <div class="aha">💡 i.p.v. ± € 20,- per stuk elders — jij bespaart</div>
+      <div class="aha">👉 Zo voelt ruilen: simpel en eerlijk</div>
     </div>
   </div>
 </section>
@@ -315,6 +366,10 @@ footer a{color:var(--yellow);text-decoration:none;}
         </select>
         <select id="piecesFilter" aria-label="Filter op stukjes" title="Meer aantallen volgen later">
           <option value="1000">1000 stukjes</option>
+        </select>
+        <select id="stockFilter" aria-label="Filter op beschikbaarheid">
+          <option value="beschikbaar">✅ Beschikbaar</option>
+          <option value="all">Alles tonen</option>
         </select>
         <span class="result-count" id="resultCount" aria-live="polite"></span>
       </div>
@@ -359,10 +414,17 @@ footer a{color:var(--yellow);text-decoration:none;}
         </div>
         <div class="est-inline">
           <div class="est-left">
-            <div class="el">Je ontvangt als tegoed</div>
-            <div class="en">95% van inleveringen krijgt dit bedrag</div>
+            <div class="el tooltip-wrap">
+              Je ontvangt als tegoed
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-box">Het tegoed hangt af van de staat van de puzzel. Als ik deze puzzel al meerdere exemplaren van heb, bied ik iets minder — dit zie je direct bij de prijs.</div>
+            </div>
+            <div class="en" id="estNote">95% van inleveringen krijgt dit bedrag</div>
           </div>
-          <div class="est-val" id="estVal">€ 5,00</div>
+          <div class="est-val-wrap">
+            <div class="est-val" id="estVal">€ 5,00</div>
+            <div class="est-korting" id="estKorting">ℹ️ Ik heb er al meerdere</div>
+          </div>
         </div>
         <button class="btn btn-green btn-sm" id="addTradeBtn" style="width:100%;justify-content:center;">➕ Tegoed toevoegen</button>
         <div class="trade-items" id="tradeItems"></div>
@@ -381,10 +443,7 @@ footer a{color:var(--yellow);text-decoration:none;}
           <div class="cart-sep"></div>
           <div class="cart-line"><span>Puzzels</span><span id="ctSub">€ 0,00</span></div>
           <div class="cart-line credit" id="ctCredRow" style="display:none;"><span>Tegoed inlevering</span><span id="ctCred">− € 0,00</span></div>
-          <div class="cart-saving" id="ctSavingRow" style="display:none;">
-            <span class="cart-saving-lbl">🎉 Besparing t.o.v. winkelprijs</span>
-            <span class="cart-saving-val" id="ctSaving">€ 0,00</span>
-          </div>
+          
           <div class="cart-sep"></div>
           <div class="cart-due"><span class="cart-due-lbl">Te betalen</span><span class="cart-due-val" id="ctDue">€ 0,00</span></div>
         </div>
@@ -402,8 +461,8 @@ footer a{color:var(--yellow);text-decoration:none;}
     <div class="how-title">Hoe werkt het?</div>
     <div class="how-sub">In vier stappen van oud naar nieuw.</div>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-ico">🔍</div><h4>Kies puzzels</h4><p>Blader door het aanbod. Klik op een afbeelding om hem te vergroten.</p></div>
-      <div class="step"><div class="step-num">2</div><div class="step-ico">📦</div><h4>Lever in voor tegoed</h4><p>Geef de staat op. Je ziet direct het tegoed.</p></div>
+      <div class="step"><div class="step-num">1</div><div class="step-ico">🔍</div><h4>Kies puzzels</h4><p>Blader door het aanbod en selecteer welke puzzels je wilt kopen.</p></div>
+      <div class="step"><div class="step-num">2</div><div class="step-ico">📦</div><h4>Lever in voor tegoed</h4><p>Ontdek hoeveel jouw puzzels waard zijn. Geef de staat op en zie direct het tegoed.</p></div>
       <div class="step"><div class="step-num">3</div><div class="step-ico">💰</div><h4>Betaal het verschil</h4><p>Tegoed gaat er direct af. Bijbetalen via Tikkie of contant.</p></div>
       <div class="step"><div class="step-num">4</div><div class="step-ico">🚲</div><h4>Bezorgen of ophalen</h4><p>Ik breng ze graag bij je thuis in Haarlem.</p></div>
     </div>
@@ -552,9 +611,11 @@ function serieBadge(s){
 function applyFilters(){
   const q=document.getElementById('searchInput').value.toLowerCase().trim();
   const ser=document.getElementById('seriesFilter').value;
+  const stock=document.getElementById('stockFilter').value;
   filtered=ALL_PUZZELS.filter(p=>{
     if(q&&!p.nl.toLowerCase().includes(q)&&!p.en.toLowerCase().includes(q))return false;
     if(ser!=='all'&&p.serie!==ser)return false;
+    if(stock==='beschikbaar'&&!(p.stock>0))return false;
     return true;
   });
   currentPage=1;
@@ -639,6 +700,7 @@ document.getElementById('pagBtns').addEventListener('click',e=>{
 
 document.getElementById('searchInput').addEventListener('input',applyFilters);
 document.getElementById('seriesFilter').addEventListener('change',applyFilters);
+document.getElementById('stockFilter').addEventListener('change',applyFilters);
 
 // ── PUZZLE INTERACTIONS ──
 document.getElementById('puzzleList').addEventListener('click',e=>{
@@ -711,13 +773,32 @@ function populateTradeSelect(){
 document.getElementById('tradeSelect').addEventListener('change',e=>{
   document.getElementById('nameRow').style.display=e.target.value==='other'?'flex':'none';
   if(e.target.value==='other')document.getElementById('customName').focus();
+  updateEstimate();
 });
+
+function updateEstimate(){
+  const sel=document.getElementById('tradeSelect');
+  const id=sel.value;
+  const p=ALL_PUZZELS.find(x=>String(x.id)===String(id));
+  // inkoop_prijs: gebruik die uit Supabase als die bestaat, anders standaard condVal
+  const base = condVal;
+  const inkoopPrijs = p && p.inkoop_prijs != null ? parseFloat(p.inkoop_prijs) : null;
+  const effectief = inkoopPrijs !== null ? Math.min(base, inkoopPrijs) : base;
+  document.getElementById('estVal').textContent=fmt(effectief);
+  const kortingEl=document.getElementById('estKorting');
+  if(inkoopPrijs !== null && inkoopPrijs < base){
+    kortingEl.style.display='block';
+    kortingEl.textContent='ℹ️ Ik heb er al meerdere (max '+fmt(inkoopPrijs)+')';
+  } else {
+    kortingEl.style.display='none';
+  }
+}
 document.getElementById('condChips').addEventListener('click',e=>{
   const btn=e.target.closest('[data-val]');if(!btn)return;
   document.querySelectorAll('#condChips .chip').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
   condVal=parseFloat(btn.dataset.val);
-  document.getElementById('estVal').textContent=fmt(condVal);
+  updateEstimate();
 });
 document.getElementById('addTradeBtn').addEventListener('click',()=>{
   const sel=document.getElementById('tradeSelect');
@@ -728,14 +809,17 @@ document.getElementById('addTradeBtn').addEventListener('click',()=>{
   else if(p){name=p.nl;}
   else{name='JvH puzzel';}
   if(id&&trades.find(t=>t.id===id))return;
-  trades.push({id:id||''+Date.now(),name,val:condVal});
+  const inkoopPrijs = p && p.inkoop_prijs != null ? parseFloat(p.inkoop_prijs) : null;
+  const effectief = inkoopPrijs !== null ? Math.min(condVal, inkoopPrijs) : condVal;
+  trades.push({id:id||''+Date.now(),name,val:effectief});
   credit=trades.reduce((a,t)=>a+t.val,0);
   sel.value='';
   document.getElementById('nameRow').style.display='none';
   document.getElementById('customName').value='';
   condVal=5;
   document.querySelectorAll('#condChips .chip').forEach((c,i)=>c.classList.toggle('active',i===0));
-  document.getElementById('estVal').textContent=fmt(5);
+  document.getElementById('estKorting').style.display='none';
+  updateEstimate();
   renderTrades();renderCart();
 });
 function renderTrades(){
@@ -780,14 +864,12 @@ function renderCart(){
   const sub=cart.reduce((a,p)=>a+p.price,0);
   const cred=Math.min(credit,sub);
   const due=Math.max(0,sub-cred);
-  const saving=cred+(cart.length*RETAIL-sub);
   document.getElementById('ctSub').textContent=fmt(sub);
   document.getElementById('ctCred').textContent='− '+fmt(cred);
   document.getElementById('ctDue').textContent=fmt(due);
   document.getElementById('ctCredRow').style.display=cred>0?'flex':'none';
   const savRow=document.getElementById('ctSavingRow');
-  if(saving>0){savRow.style.display='flex';document.getElementById('ctSaving').textContent=fmt(saving);}
-  else savRow.style.display='none';
+  if(savRow) savRow.style.display='none';
   totals.style.display='block';
   bookBtn.disabled=false;
 }
