@@ -30,7 +30,7 @@
   "url":"https://puzzelruil-haarlem.nl",
   "areaServed":{"@type":"City","name":"Haarlem"},
   "address":{"@type":"PostalAddress","addressLocality":"Haarlem","addressCountry":"NL"},
-  "email":"hallo@puzzelruil-haarlem.nl",
+  "email":"hello@puzzelruil.nl",
   "openingHours":"Mo-Sa 10:00-20:00",
   "priceRange":"€€"
 }
@@ -242,6 +242,28 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);mi
 .modal-address{background:var(--cream);border-radius:9px;padding:.6rem .9rem;font-size:.79rem;border:1px solid var(--border);margin-bottom:1rem;}
 .modal-address strong{display:block;margin-bottom:.15rem;}
 .modal-address span{color:var(--muted);}
+.modal .field-input-inline{width:100%;font-family:'Nunito',sans-serif;font-size:.87rem;padding:8px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);color:var(--ink);outline:none;margin-bottom:.75rem;}
+.modal .field-input-inline:focus{border-color:var(--green);}
+
+/* MINI CALENDAR */
+.mini-cal{background:var(--cream);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;background:#fff;border-bottom:1px solid var(--border);}
+.cal-nav-btn{background:none;border:none;font-size:1rem;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:6px;}
+.cal-nav-btn:hover{background:var(--red-light);color:var(--red);}
+.cal-month{font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--ink);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:.4rem;}
+.cal-dow{text-align:center;font-size:.62rem;font-weight:800;color:var(--muted);text-transform:uppercase;padding:.2rem 0;}
+.cal-day{text-align:center;font-size:.78rem;font-weight:700;padding:5px 2px;border-radius:7px;cursor:pointer;color:var(--ink);border:1.5px solid transparent;transition:all .1s;}
+.cal-day:hover:not(.cal-empty):not(.cal-past){background:var(--green-light);color:var(--green-dark);}
+.cal-day.cal-sel{background:var(--green);color:#fff;border-color:var(--green);}
+.cal-day.cal-past{color:#ccc;cursor:not-allowed;}
+.cal-day.cal-empty{cursor:default;}
+.cal-day.cal-today{border-color:var(--green);color:var(--green-dark);}
+
+/* TIME CHIPS */
+.time-chips{display:flex;flex-wrap:wrap;gap:.3rem;}
+.time-chips .chip{font-size:.75rem;padding:5px 10px;}
+.time-chips .chip.active{background:var(--green);color:#fff;border-color:var(--green);}
 .confirm-success{display:none;text-align:center;padding:1rem 0;}
 .confirm-success .ico{font-size:3rem;margin-bottom:.35rem;}
 .confirm-success h4{font-family:'Fredoka One',cursive;font-size:1.35rem;color:var(--green-dark);margin-bottom:.25rem;}
@@ -470,7 +492,7 @@ footer a{color:var(--yellow);text-decoration:none;}
 </div>
 
 <footer>
-  <p>PuzzelRuil Haarlem — particulier initiatief voor Jan van Haasteren fans · <a href="mailto:hallo@puzzelruil-haarlem.nl">hallo@puzzelruil-haarlem.nl</a> · Actief in Haarlem sinds 2024</p>
+  <p>PuzzelRuil Haarlem — particulier initiatief voor Jan van Haasteren fans · <a href="mailto:hello@puzzelruil.nl">hello@puzzelruil.nl</a> · Actief in Haarlem sinds 2024</p>
   <p style="margin-top:.3rem;font-size:.7rem;">Puzzels tweedehands · Geen commercieel bedrijf · 50+ tevreden ruilers</p>
 </footer>
 
@@ -498,12 +520,35 @@ footer a{color:var(--yellow);text-decoration:none;}
       <button class="delivery-btn sel" data-d="bezorgen">🚲 Thuisbezorgen</button>
       <button class="delivery-btn" data-d="ophalen">🏠 Zelf ophalen</button>
     </div>
-    <div class="modal-address" id="modalAddress">
-      <strong>Bezorging in Haarlem</strong>
-      <span>Ik kom naar jou — adres bevestig je hierna via WhatsApp</span>
+    <div id="addressFields" style="margin-bottom:1rem;">
+      <label class="field-lbl" for="streetInput">Straatnaam + huisnummer</label>
+      <input class="field-input-inline" id="streetInput" placeholder="bijv. Grote Markt 12" style="margin-bottom:0;" />
+    </div>
+    <div class="modal-address" id="modalAddress" style="display:none;">
+      <strong>Ophaaladres</strong>
+      <span>Haarlem Centrum — exacte adres na bevestiging</span>
     </div>
     <div class="slots-lbl">Kies een tijdslot</div>
     <div class="slots" id="slotsGrid"></div>
+    <div id="voorstelFields" style="display:none;margin-bottom:1rem;">
+      <label class="field-lbl">Kies een datum</label>
+      <div id="miniCal" class="mini-cal"></div>
+      <label class="field-lbl" style="margin-top:.65rem;">Kies een tijdstip</label>
+      <div class="time-chips" id="timeChips">
+        <button class="chip" data-t="09:00">09:00</button>
+        <button class="chip" data-t="10:00">10:00</button>
+        <button class="chip" data-t="11:00">11:00</button>
+        <button class="chip" data-t="12:00">12:00</button>
+        <button class="chip" data-t="13:00">13:00</button>
+        <button class="chip" data-t="14:00">14:00</button>
+        <button class="chip" data-t="15:00">15:00</button>
+        <button class="chip" data-t="16:00">16:00</button>
+        <button class="chip" data-t="17:00">17:00</button>
+        <button class="chip" data-t="18:00">18:00</button>
+        <button class="chip" data-t="19:00">19:00</button>
+        <button class="chip" data-t="20:00">20:00</button>
+      </div>
+    </div>
     <div class="confirm-success" id="confirmSuccess">
       <div class="ico">✅</div>
       <h4>Geregeld!</h4>
@@ -587,12 +632,11 @@ function imgUrl(p) {
 
 const PAGE_SIZE = 10;
 const SLOTS=[
-  {day:"Ma 21 apr",time:"10:00 – 12:00"},
-  {day:"Ma 21 apr",time:"14:00 – 17:00"},
-  {day:"Di 22 apr",time:"10:00 – 12:00"},
-  {day:"Di 22 apr",time:"18:00 – 20:00"},
-  {day:"Wo 23 apr",time:"10:00 – 12:00"},
-  {day:"Do 24 apr",time:"14:00 – 17:00"},
+  {day:"Do 24 apr",time:"11:00 – 13:00"},
+  {day:"Zo 3 mei",time:"11:00 – 13:00"},
+  {day:"Wo 6 mei",time:"10:00 – 12:00"},
+  {day:"Zo 10 mei",time:"11:00 – 13:00"},
+  {day:"Eigen voorstel",time:"Kies zelf een moment"},
 ];
 
 const RETAIL=19.99;
@@ -881,25 +925,95 @@ document.getElementById('cartContent').addEventListener('click',e=>{
 document.getElementById('clearBtn').addEventListener('click',()=>{cart=[];applyFilters();renderCart();});
 
 // ── BOOKING MODAL ──
+let deliveryMode='bezorgen';
+let calYear,calMonth,calSelDay=null,selTime=null;
+
+function initCal(){
+  const now=new Date();
+  calYear=now.getFullYear();
+  calMonth=now.getMonth();
+  calSelDay=null;selTime=null;
+  renderCal();
+  document.querySelectorAll('#timeChips .chip').forEach(c=>c.classList.remove('active'));
+}
+
+function renderCal(){
+  const NL_MONTHS=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  const NL_DAYS=['ma','di','wo','do','vr','za','zo'];
+  const now=new Date();now.setHours(0,0,0,0);
+  const firstDay=new Date(calYear,calMonth,1);
+  const startDow=(firstDay.getDay()+6)%7;
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  let html=`<div class="cal-nav">
+    <button class="cal-nav-btn" id="calPrev">‹</button>
+    <span class="cal-month">${NL_MONTHS[calMonth]} ${calYear}</span>
+    <button class="cal-nav-btn" id="calNext">›</button>
+  </div><div class="cal-grid">`;
+  NL_DAYS.forEach(d=>html+=`<div class="cal-dow">${d}</div>`);
+  for(let i=0;i<startDow;i++) html+=`<div class="cal-day cal-empty"></div>`;
+  for(let d=1;d<=daysInMonth;d++){
+    const date=new Date(calYear,calMonth,d);
+    const isPast=date<now;
+    const isSel=calSelDay===d;
+    const isToday=date.getTime()===now.getTime();
+    let cls='cal-day';
+    if(isPast)cls+=' cal-past';
+    if(isSel)cls+=' cal-sel';
+    if(isToday&&!isSel)cls+=' cal-today';
+    html+=`<div class="${cls}" data-day="${d}">${d}</div>`;
+  }
+  html+='</div>';
+  document.getElementById('miniCal').innerHTML=html;
+  document.getElementById('calPrev').addEventListener('click',e=>{
+    e.stopPropagation();calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();
+  });
+  document.getElementById('calNext').addEventListener('click',e=>{
+    e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();
+  });
+  document.querySelectorAll('#miniCal .cal-day:not(.cal-past):not(.cal-empty)').forEach(el=>{
+    el.addEventListener('click',()=>{calSelDay=+el.dataset.day;renderCal();});
+  });
+}
+
+document.getElementById('timeChips').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-t]');if(!btn)return;
+  document.querySelectorAll('#timeChips .chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  selTime=btn.dataset.t;
+});
+
 document.getElementById('bookBtn').addEventListener('click',()=>{
   if(!cart.length)return;
   selSlot=null;renderSlots();
   document.getElementById('confirmSuccess').style.display='none';
   document.getElementById('confirmBtn').style.display='flex';
+  document.getElementById('voorstelFields').style.display='none';
+  document.getElementById('streetInput').value='';
+  deliveryMode='bezorgen';
+  document.querySelectorAll('[data-d]').forEach(b=>b.classList.remove('sel'));
+  document.querySelector('[data-d="bezorgen"]').classList.add('sel');
+  document.getElementById('addressFields').style.display='block';
+  document.getElementById('modalAddress').style.display='none';
   document.getElementById('overlay').classList.add('open');
 });
 document.getElementById('modalClose').addEventListener('click',()=>document.getElementById('overlay').classList.remove('open'));
 document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');});
+
 document.querySelectorAll('[data-d]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('[data-d]').forEach(b=>b.classList.remove('sel'));
     btn.classList.add('sel');
-    const addr=document.getElementById('modalAddress');
-    addr.innerHTML=btn.dataset.d==='bezorgen'
-      ?'<strong>Bezorging in Haarlem</strong><span>Ik kom naar jou — adres via WhatsApp</span>'
-      :'<strong>Ophaaladres</strong><span>Haarlem Centrum — exacte adres na bevestiging</span>';
+    deliveryMode=btn.dataset.d;
+    if(deliveryMode==='bezorgen'){
+      document.getElementById('addressFields').style.display='block';
+      document.getElementById('modalAddress').style.display='none';
+    } else {
+      document.getElementById('addressFields').style.display='none';
+      document.getElementById('modalAddress').style.display='block';
+    }
   });
 });
+
 function renderSlots(){
   document.getElementById('slotsGrid').innerHTML=SLOTS.map((s,i)=>`
     <button class="slot${selSlot===i?' sel':''}" data-slot="${i}">
@@ -909,9 +1023,43 @@ function renderSlots(){
 document.getElementById('slotsGrid').addEventListener('click',e=>{
   const btn=e.target.closest('[data-slot]');if(!btn)return;
   selSlot=+btn.dataset.slot;renderSlots();
+  const isVoorstel=SLOTS[selSlot].day==='Eigen voorstel';
+  document.getElementById('voorstelFields').style.display=isVoorstel?'block':'none';
+  if(isVoorstel)initCal();
 });
+
 document.getElementById('confirmBtn').addEventListener('click',()=>{
   if(selSlot===null){alert('Kies eerst een tijdslot!');return;}
+  const slot=SLOTS[selSlot];
+  const isVoorstel=slot.day==='Eigen voorstel';
+  if(isVoorstel&&!calSelDay){alert('Kies een datum!');return;}
+  if(isVoorstel&&!selTime){alert('Kies een tijdstip!');return;}
+  if(deliveryMode==='bezorgen'&&!document.getElementById('streetInput').value.trim()){
+    alert('Vul je straatnaam en huisnummer in!');return;
+  }
+  const NL_MONTHS=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  const puzzelLijst=cart.map(p=>`- ${p.nl} (${fmt(p.price)})`).join('\n');
+  const tradeLijst=trades.length?trades.map(t=>`- ${t.name} (+ ${fmt(t.val)})`).join('\n'):'Geen inleveringen';
+  const sub=cart.reduce((a,p)=>a+p.price,0);
+  const cred=Math.min(credit,sub);
+  const due=Math.max(0,sub-cred);
+  const tijdstip=isVoorstel
+    ?`Voorstel: ${calSelDay} ${NL_MONTHS[calMonth]} ${calYear} om ${selTime}`
+    :`${slot.day} — ${slot.time}`;
+  const bezorging=deliveryMode==='bezorgen'
+    ?'Thuisbezorgen\nAdres: '+document.getElementById('streetInput').value.trim()
+    :'Zelf ophalen (adres volgt)';
+  const body=[
+    '📅 NIEUWE BESTELLING — PuzzelRuil','',
+    '=== Puzzels ===',puzzelLijst,'',
+    '=== Inleveringen ===',tradeLijst,'',
+    '=== Financieel ===',
+    'Subtotaal: '+fmt(sub),'Tegoed: - '+fmt(cred),'Te betalen: '+fmt(due),'',
+    '=== Afspraak ===','Tijdstip: '+tijdstip,'Bezorging: '+bezorging,
+  ].join('\n');
+  window.location.href='mailto:hello@puzzelruil.nl'
+    +'?subject='+encodeURIComponent('Nieuwe bestelling PuzzelRuil')
+    +'&body='+encodeURIComponent(body);
   document.getElementById('confirmSuccess').style.display='block';
   document.getElementById('confirmBtn').style.display='none';
 });
