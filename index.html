@@ -520,6 +520,12 @@ footer a{color:var(--yellow);text-decoration:none;}
       <h3>📅 Kies een moment</h3>
       <p class="modal-intro">Ik bezorg graag bij je thuis in Haarlem. Kies een datum en tijdstip dat jou uitkomt.</p>
       <div style="margin-bottom:.75rem;">
+        <label class="field-lbl" for="nameInput">Naam</label>
+        <input class="field-input-inline" id="nameInput" placeholder="bijv. Jan de Vries" style="margin-bottom:.6rem;" />
+        <label class="field-lbl" for="emailInput">E-mailadres</label>
+        <input class="field-input-inline" id="emailInput" type="email" placeholder="naam@email.nl" style="margin-bottom:.6rem;" />
+        <label class="field-lbl" for="phoneInput">Telefoonnummer <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(optioneel)</span></label>
+        <input class="field-input-inline" id="phoneInput" type="tel" placeholder="06-12345678" style="margin-bottom:.6rem;" />
         <label class="field-lbl" for="streetInput">Straatnaam + huisnummer</label>
         <input class="field-input-inline" id="streetInput" placeholder="bijv. Grote Markt 12" style="margin-bottom:.6rem;" />
         <label class="field-lbl" for="remarksInput">Bijzonderheden <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(optioneel)</span></label>
@@ -1039,6 +1045,9 @@ document.getElementById('timeChips').addEventListener('click',e=>{
 
 document.getElementById('bookBtn').addEventListener('click',()=>{
   if(!cart.length)return;
+  document.getElementById('nameInput').value='';
+  document.getElementById('phoneInput').value='';
+  document.getElementById('emailInput').value='';
   document.getElementById('streetInput').value='';
   document.getElementById('remarksInput').value='';
   showFormView();
@@ -1052,8 +1061,14 @@ document.getElementById('overlay').addEventListener('click',e=>{
 });
 
 document.getElementById('confirmBtn').addEventListener('click',async ()=>{
-  const street=document.getElementById('streetInput').value.trim();
-  const remarks=document.getElementById('remarksInput').value.trim();
+  const naam   = document.getElementById('nameInput').value.trim();
+  const telefoon = document.getElementById('phoneInput').value.trim();
+  const email  = document.getElementById('emailInput').value.trim();
+  const street = document.getElementById('streetInput').value.trim();
+  const remarks= document.getElementById('remarksInput').value.trim();
+
+  if(!naam){alert('Vul je naam in!');return;}
+  if(!email||!email.includes('@')){alert('Vul een geldig e-mailadres in!');return;}
   if(!street){alert('Vul je straatnaam en huisnummer in!');return;}
   if(!calSelDay){alert('Kies eerst een datum!');return;}
   if(!selTime){alert('Kies een tijdstip!');return;}
@@ -1067,9 +1082,11 @@ document.getElementById('confirmBtn').addEventListener('click',async ()=>{
   const btn=document.getElementById('confirmBtn');
   btn.textContent='Versturen…';btn.disabled=true;
 
-  // ── Verstuur via EmailJS ──
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      naam,
+      telefoon:     telefoon||'—',
+      email:        email||'—',
       adres:        street,
       bijzonderheden: remarks||'—',
       datum:        tijdstip,
@@ -1081,13 +1098,14 @@ document.getElementById('confirmBtn').addEventListener('click',async ()=>{
     });
   } catch(err){
     console.warn('EmailJS fout:', err);
-    // Stil falen — bevestigingsscherm toch tonen
   }
 
   btn.textContent='✅ Bevestigen';btn.disabled=false;
 
-  // Vul samenvatting en toon successView
   document.getElementById('confirmSummary').innerHTML=`
+    <div><strong>👤 Naam:</strong> ${naam}</div>
+    ${telefoon?`<div><strong>📱 Telefoon:</strong> ${telefoon}</div>`:''}
+    ${email?`<div><strong>📧 E-mail:</strong> ${email}</div>`:''}
     <div><strong>📍 Adres:</strong> ${street}</div>
     ${remarks?`<div><strong>💬 Bijzonderheden:</strong> ${remarks}</div>`:''}
     <div><strong>📅 Datum:</strong> ${tijdstip}</div>
