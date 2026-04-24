@@ -258,16 +258,15 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);mi
 .cal-day.cal-sel{background:var(--green);color:#fff;border-color:var(--green);}
 .cal-day.cal-past{color:#ccc;cursor:not-allowed;}
 .cal-day.cal-empty{cursor:default;}
+.time-chips{margin-bottom:.85rem;}
 .cal-day.cal-today{border-color:var(--green);color:var(--green-dark);}
 
 /* TIME CHIPS */
 .time-chips{display:flex;flex-wrap:wrap;gap:.3rem;}
 .time-chips .chip{font-size:.75rem;padding:5px 10px;}
 .time-chips .chip.active{background:var(--green);color:#fff;border-color:var(--green);}
-.confirm-success{display:none;text-align:center;padding:1rem 0;}
-.confirm-success .ico{font-size:3rem;margin-bottom:.35rem;}
-.confirm-success h4{font-family:'Fredoka One',cursive;font-size:1.35rem;color:var(--green-dark);margin-bottom:.25rem;}
-.confirm-success p{font-size:.83rem;color:var(--muted);}
+.confirm-success{display:none;flex-direction:column;align-items:center;text-align:center;padding:.5rem 0;}
+.time-chips{margin-bottom:.85rem;}
 
 /* HOW */
 .how-section{background:#fff;padding:3rem 1.5rem;}
@@ -514,50 +513,45 @@ footer a{color:var(--yellow);text-decoration:none;}
 <div class="overlay" id="overlay" role="dialog" aria-modal="true">
   <div class="modal">
     <button class="modal-close" id="modalClose" aria-label="Sluiten">✕</button>
-    <h3>📅 Kies een moment</h3>
-    <p class="modal-intro">Bezorging aan huis of zelf ophalen?</p>
-    <div class="delivery-row">
-      <button class="delivery-btn sel" data-d="bezorgen">🚲 Thuisbezorgen</button>
-      <button class="delivery-btn" data-d="ophalen">🏠 Zelf ophalen</button>
-    </div>
-    <div id="addressFields" style="margin-bottom:1rem;">
-      <label class="field-lbl" for="streetInput">Straatnaam + huisnummer</label>
-      <input class="field-input-inline" id="streetInput" placeholder="bijv. Grote Markt 12" style="margin-bottom:0;" />
-    </div>
-    <div class="modal-address" id="modalAddress" style="display:none;">
-      <strong>Ophaaladres</strong>
-      <span>Haarlem Centrum — exacte adres na bevestiging</span>
-    </div>
-    <div class="slots-lbl">Kies een tijdslot</div>
-    <div class="slots" id="slotsGrid"></div>
-    <div id="voorstelFields" style="display:none;margin-bottom:1rem;">
+
+    <!-- VIEW 1: Formulier -->
+    <div id="formView">
+      <h3>📅 Kies een moment</h3>
+      <p class="modal-intro">Ik bezorg graag bij je thuis in Haarlem. Kies een datum en tijdstip dat jou uitkomt.</p>
+      <div style="margin-bottom:.75rem;">
+        <label class="field-lbl" for="streetInput">Straatnaam + huisnummer</label>
+        <input class="field-input-inline" id="streetInput" placeholder="bijv. Grote Markt 12" style="margin-bottom:.6rem;" />
+        <label class="field-lbl" for="remarksInput">Bijzonderheden <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(optioneel)</span></label>
+        <input class="field-input-inline" id="remarksInput" placeholder="bijv. bel aanbellen werkt niet, bel op 06-…" style="margin-bottom:0;" />
+      </div>
       <label class="field-lbl">Kies een datum</label>
       <div id="miniCal" class="mini-cal"></div>
-      <label class="field-lbl" style="margin-top:.65rem;">Kies een tijdstip</label>
+      <label class="field-lbl" style="margin-top:.75rem;">Kies een tijdstip</label>
       <div class="time-chips" id="timeChips">
-        <button class="chip" data-t="09:00">09:00</button>
         <button class="chip" data-t="10:00">10:00</button>
         <button class="chip" data-t="11:00">11:00</button>
-        <button class="chip" data-t="12:00">12:00</button>
         <button class="chip" data-t="13:00">13:00</button>
         <button class="chip" data-t="14:00">14:00</button>
         <button class="chip" data-t="15:00">15:00</button>
         <button class="chip" data-t="16:00">16:00</button>
-        <button class="chip" data-t="17:00">17:00</button>
-        <button class="chip" data-t="18:00">18:00</button>
         <button class="chip" data-t="19:00">19:00</button>
         <button class="chip" data-t="20:00">20:00</button>
       </div>
+      <button class="btn btn-green" id="confirmBtn" style="width:100%;justify-content:center;font-size:.9rem;">✅ Bevestigen</button>
     </div>
-    <div class="confirm-success" id="confirmSuccess">
-      <div class="ico">✅</div>
-      <h4>Geregeld!</h4>
-      <p>Je hoort snel van me ter bevestiging.<br>Veel puzzelplezier! 🧩</p>
+
+    <!-- VIEW 2: Bevestiging -->
+    <div id="successView" style="display:none;text-align:center;padding:.5rem 0;">
+      <div style="font-size:3rem;margin-bottom:.4rem;">✅</div>
+      <h4 style="font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--green-dark);margin-bottom:.3rem;">Geregeld!</h4>
+      <p style="font-size:.86rem;color:var(--muted);margin-bottom:1.1rem;">Je ontvangt binnen enkele minuten een bevestiging.</p>
+      <div id="confirmSummary" style="background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:.85rem 1rem;text-align:left;font-size:.84rem;line-height:1.8;color:var(--ink);"></div>
     </div>
-    <button class="btn btn-green" id="confirmBtn" style="width:100%;justify-content:center;font-size:.9rem;">✅ Bevestigen</button>
+
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ── SUPABASE ──
@@ -631,16 +625,8 @@ function imgUrl(p) {
 }
 
 const PAGE_SIZE = 10;
-const SLOTS=[
-  {day:"Do 24 apr",time:"11:00 – 13:00"},
-  {day:"Zo 3 mei",time:"11:00 – 13:00"},
-  {day:"Wo 6 mei",time:"10:00 – 12:00"},
-  {day:"Zo 10 mei",time:"11:00 – 13:00"},
-  {day:"Eigen voorstel",time:"Kies zelf een moment"},
-];
-
 const RETAIL=19.99;
-let cart=[],trades=[],credit=0,condVal=5,selSlot=null,lbPuzzle=null;
+let cart=[],trades=[],credit=0,condVal=5,lbPuzzle=null;
 let filtered=[];
 let currentPage=1;
 const fmt=n=>'€ '+n.toFixed(2).replace('.',',');
@@ -925,8 +911,22 @@ document.getElementById('cartContent').addEventListener('click',e=>{
 document.getElementById('clearBtn').addEventListener('click',()=>{cart=[];applyFilters();renderCart();});
 
 // ── BOOKING MODAL ──
-let deliveryMode='bezorgen';
 let calYear,calMonth,calSelDay=null,selTime=null;
+
+// ── EmailJS — vul jouw 3 waarden in ──
+const EMAILJS_PUBLIC_KEY  = '6oAAe9vByGOLLp9av';
+const EMAILJS_SERVICE_ID  = 'service_po5pqnv';
+const EMAILJS_TEMPLATE_ID = 'template_0xkbgtc';
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+function showFormView(){
+  document.getElementById('formView').style.display='block';
+  document.getElementById('successView').style.display='none';
+}
+function showSuccessView(){
+  document.getElementById('formView').style.display='none';
+  document.getElementById('successView').style.display='block';
+}
 
 function initCal(){
   const now=new Date();
@@ -953,13 +953,16 @@ function renderCal(){
   for(let i=0;i<startDow;i++) html+=`<div class="cal-day cal-empty"></div>`;
   for(let d=1;d<=daysInMonth;d++){
     const date=new Date(calYear,calMonth,d);
+    const dow=date.getDay();
     const isPast=date<now;
+    const isSat=dow===6;
     const isSel=calSelDay===d;
     const isToday=date.getTime()===now.getTime();
+    const isBlocked=isPast||isSat;
     let cls='cal-day';
-    if(isPast)cls+=' cal-past';
-    if(isSel)cls+=' cal-sel';
-    if(isToday&&!isSel)cls+=' cal-today';
+    if(isBlocked)cls+=' cal-past';
+    if(isSel&&!isBlocked)cls+=' cal-sel';
+    if(isToday&&!isSel&&!isBlocked)cls+=' cal-today';
     html+=`<div class="${cls}" data-day="${d}">${d}</div>`;
   }
   html+='</div>';
@@ -984,84 +987,64 @@ document.getElementById('timeChips').addEventListener('click',e=>{
 
 document.getElementById('bookBtn').addEventListener('click',()=>{
   if(!cart.length)return;
-  selSlot=null;renderSlots();
-  document.getElementById('confirmSuccess').style.display='none';
-  document.getElementById('confirmBtn').style.display='flex';
-  document.getElementById('voorstelFields').style.display='none';
   document.getElementById('streetInput').value='';
-  deliveryMode='bezorgen';
-  document.querySelectorAll('[data-d]').forEach(b=>b.classList.remove('sel'));
-  document.querySelector('[data-d="bezorgen"]').classList.add('sel');
-  document.getElementById('addressFields').style.display='block';
-  document.getElementById('modalAddress').style.display='none';
+  document.getElementById('remarksInput').value='';
+  showFormView();
+  initCal();
   document.getElementById('overlay').classList.add('open');
 });
+
 document.getElementById('modalClose').addEventListener('click',()=>document.getElementById('overlay').classList.remove('open'));
-document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');});
-
-document.querySelectorAll('[data-d]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('[data-d]').forEach(b=>b.classList.remove('sel'));
-    btn.classList.add('sel');
-    deliveryMode=btn.dataset.d;
-    if(deliveryMode==='bezorgen'){
-      document.getElementById('addressFields').style.display='block';
-      document.getElementById('modalAddress').style.display='none';
-    } else {
-      document.getElementById('addressFields').style.display='none';
-      document.getElementById('modalAddress').style.display='block';
-    }
-  });
+document.getElementById('overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');
 });
 
-function renderSlots(){
-  document.getElementById('slotsGrid').innerHTML=SLOTS.map((s,i)=>`
-    <button class="slot${selSlot===i?' sel':''}" data-slot="${i}">
-      <span class="day">${s.day}</span>${s.time}
-    </button>`).join('');
-}
-document.getElementById('slotsGrid').addEventListener('click',e=>{
-  const btn=e.target.closest('[data-slot]');if(!btn)return;
-  selSlot=+btn.dataset.slot;renderSlots();
-  const isVoorstel=SLOTS[selSlot].day==='Eigen voorstel';
-  document.getElementById('voorstelFields').style.display=isVoorstel?'block':'none';
-  if(isVoorstel)initCal();
-});
+document.getElementById('confirmBtn').addEventListener('click',async ()=>{
+  const street=document.getElementById('streetInput').value.trim();
+  const remarks=document.getElementById('remarksInput').value.trim();
+  if(!street){alert('Vul je straatnaam en huisnummer in!');return;}
+  if(!calSelDay){alert('Kies eerst een datum!');return;}
+  if(!selTime){alert('Kies een tijdstip!');return;}
 
-document.getElementById('confirmBtn').addEventListener('click',()=>{
-  if(selSlot===null){alert('Kies eerst een tijdslot!');return;}
-  const slot=SLOTS[selSlot];
-  const isVoorstel=slot.day==='Eigen voorstel';
-  if(isVoorstel&&!calSelDay){alert('Kies een datum!');return;}
-  if(isVoorstel&&!selTime){alert('Kies een tijdstip!');return;}
-  if(deliveryMode==='bezorgen'&&!document.getElementById('streetInput').value.trim()){
-    alert('Vul je straatnaam en huisnummer in!');return;
-  }
   const NL_MONTHS=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
-  const puzzelLijst=cart.map(p=>`- ${p.nl} (${fmt(p.price)})`).join('\n');
-  const tradeLijst=trades.length?trades.map(t=>`- ${t.name} (+ ${fmt(t.val)})`).join('\n'):'Geen inleveringen';
+  const tijdstip=`${calSelDay} ${NL_MONTHS[calMonth]} ${calYear} om ${selTime}`;
   const sub=cart.reduce((a,p)=>a+p.price,0);
   const cred=Math.min(credit,sub);
   const due=Math.max(0,sub-cred);
-  const tijdstip=isVoorstel
-    ?`Voorstel: ${calSelDay} ${NL_MONTHS[calMonth]} ${calYear} om ${selTime}`
-    :`${slot.day} — ${slot.time}`;
-  const bezorging=deliveryMode==='bezorgen'
-    ?'Thuisbezorgen\nAdres: '+document.getElementById('streetInput').value.trim()
-    :'Zelf ophalen (adres volgt)';
-  const body=[
-    '📅 NIEUWE BESTELLING — PuzzelRuil','',
-    '=== Puzzels ===',puzzelLijst,'',
-    '=== Inleveringen ===',tradeLijst,'',
-    '=== Financieel ===',
-    'Subtotaal: '+fmt(sub),'Tegoed: - '+fmt(cred),'Te betalen: '+fmt(due),'',
-    '=== Afspraak ===','Tijdstip: '+tijdstip,'Bezorging: '+bezorging,
-  ].join('\n');
-  window.location.href='mailto:hello@puzzelruil.nl'
-    +'?subject='+encodeURIComponent('Nieuwe bestelling PuzzelRuil')
-    +'&body='+encodeURIComponent(body);
-  document.getElementById('confirmSuccess').style.display='block';
-  document.getElementById('confirmBtn').style.display='none';
+
+  const btn=document.getElementById('confirmBtn');
+  btn.textContent='Versturen…';btn.disabled=true;
+
+  // ── Verstuur via EmailJS ──
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      adres:        street,
+      bijzonderheden: remarks||'—',
+      datum:        tijdstip,
+      puzzels:      cart.map(p=>`${p.nl} (${fmt(p.price)})`).join(', '),
+      inleveringen: trades.length ? trades.map(t=>`${t.name} (+${fmt(t.val)})`).join(', ') : 'Geen',
+      subtotaal:    fmt(sub),
+      tegoed:       fmt(cred),
+      te_betalen:   fmt(due),
+    });
+  } catch(err){
+    console.warn('EmailJS fout:', err);
+    // Stil falen — bevestigingsscherm toch tonen
+  }
+
+  btn.textContent='✅ Bevestigen';btn.disabled=false;
+
+  // Vul samenvatting en toon successView
+  document.getElementById('confirmSummary').innerHTML=`
+    <div><strong>📍 Adres:</strong> ${street}</div>
+    ${remarks?`<div><strong>💬 Bijzonderheden:</strong> ${remarks}</div>`:''}
+    <div><strong>📅 Datum:</strong> ${tijdstip}</div>
+    <div style="margin-top:.5rem;border-top:1px dashed var(--border);padding-top:.5rem;">
+      ${cart.map(p=>`<div>🧩 ${p.nl} — ${fmt(p.price)}</div>`).join('')}
+      ${cred>0?`<div style="color:var(--green-dark);">📦 Tegoed: −${fmt(cred)}</div>`:''}
+      <div style="font-weight:800;margin-top:.3rem;">💰 Te betalen: ${fmt(due)}</div>
+    </div>`;
+  showSuccessView();
 });
 
 // ── INIT ──
