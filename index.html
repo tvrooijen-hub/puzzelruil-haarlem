@@ -6,7 +6,7 @@
 
 <!-- ═══ SEO ═══ -->
 <title>PuzzelRuil Haarlem — Jan van Haasteren 1000 stukjes ruilen &amp; kopen</title>
-<meta name="description" content="Ruil je voltooide Jan van Haasteren puzzels in Haarlem. Lever in voor tegoed, kies nieuwe puzzels en betaal alleen het verschil. Thuisbezorging of ophalen in Haarlem."/>
+<meta name="description" content="Ruil je voltooide Jan van Haasteren puzzels in Haarlem. Lever in voor tegoed, kies nieuwe puzzels en betaal alleen het verschil. Wij bezorgen bij je thuis."/>
 <meta name="keywords" content="Jan van Haasteren puzzel ruilen Haarlem, JvH puzzel tweedehands, puzzels kopen Haarlem, puzzelruil"/>
 <meta name="robots" content="index, follow"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
@@ -163,7 +163,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);mi
 .field-select,.field-input-inline{width:100%;font-family:'Nunito',sans-serif;font-size:.87rem;padding:8px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);color:var(--ink);outline:none;margin-bottom:.75rem;}
 .field-select:focus,.field-input-inline:focus{border-color:var(--green);}
 .inline-name-row{display:none;flex-direction:column;margin-bottom:.75rem;}
-.cond-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.cond-chips{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;}
 .chip{padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;background:transparent;color:var(--muted);transition:all .12s;}
 .chip.c-ok.active{background:var(--green);color:#fff;border-color:var(--green);}
 .chip.c-warn.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow-dark);}
@@ -265,6 +265,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);mi
 .time-chips{display:flex;flex-wrap:wrap;gap:.3rem;}
 .time-chips .chip{font-size:.75rem;padding:5px 10px;}
 .time-chips .chip.active{background:var(--green);color:#fff;border-color:var(--green);}
+.time-chips .chip.chip-disabled{opacity:.35;cursor:not-allowed;}
 .confirm-success{display:none;flex-direction:column;align-items:center;text-align:center;padding:.5rem 0;}
 .time-chips{margin-bottom:.85rem;}
 
@@ -325,8 +326,8 @@ footer a{color:var(--yellow);text-decoration:none;}
 
   /* INLEVEREN */
   .tradein-body{padding:.75rem;}
-  .cond-chips{gap:.3rem;}
-  .chip{font-size:.72rem;padding:5px 9px;}
+  .cond-chips{grid-template-columns:1fr;gap:.3rem;}
+  .chip{font-size:.82rem;padding:10px 12px;text-align:left;}
 
   /* HOW */
   .how-section{padding:2rem 1rem;}
@@ -336,6 +337,11 @@ footer a{color:var(--yellow);text-decoration:none;}
   /* CART */
   .cart-box{margin-top:0;}
   .cart-head{padding:.7rem 1rem;}
+
+  /* MODAL */
+  .modal{padding:1.25rem 1rem 1rem;max-height:92vh;}
+  .time-chips .chip{font-size:.8rem;padding:8px 10px;}
+  .cal-day{font-size:.82rem;padding:7px 2px;}
 }
 </style>
 </head>
@@ -343,7 +349,6 @@ footer a{color:var(--yellow);text-decoration:none;}
 
 <header class="topbar">
   <div class="brand">🧩 PuzzelRuil Haarlem <span class="brand-pill">JvH collectie</span></div>
-  <div class="trust-bar">✅ Actief in Haarlem · 50+ puzzels geruild</div>
 </header>
 
 <section class="hero">
@@ -351,15 +356,15 @@ footer a{color:var(--yellow);text-decoration:none;}
     <div>
       <div class="eyebrow">Voor JvH-fans in Haarlem</div>
       <h1>Ruil je puzzel —<br><em>betaal alleen het verschil</em></h1>
-      <p class="hero-sub">Lever je voltooide Jan van Haasteren puzzels in voor tegoed en kies nieuwe. Geen Marktplaats-gedoe. Ophalen kan, <strong>thuisbezorgen nog liever.</strong></p>
+      <p class="hero-sub">Lever je voltooide Jan van Haasteren puzzels in en kies nieuwe. Geen Marktplaats-gedoe. <strong>Wij bezorgen gewoon bij je thuis in Haarlem.</strong></p>
       <div class="hero-btns">
         <a class="btn btn-yellow" href="#app">🔍 Bekijk aanbod</a>
         <a class="btn btn-outline" href="#inleveren">📦 Inleveren voor tegoed</a>
       </div>
       <div class="trust-row">
         <span class="trust-item">✅ 50+ puzzels geruild</span>
-        <span class="trust-item">🚲 Bezorging in Haarlem</span>
-        <span class="trust-item">⭐ Actief sinds 2024</span>
+        <span class="trust-item"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:3px;"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h-3l-2 5.5M5.5 17.5l3-6.5h7l2 6.5"/><circle cx="12" cy="4" r="1"/></svg> Bezorging in Haarlem</span>
+        <span class="trust-item">⭐ Actief sinds 2026</span>
       </div>
     </div>
     <div class="price-card">
@@ -367,7 +372,7 @@ footer a{color:var(--yellow);text-decoration:none;}
       <div class="price-row"><span class="l">3 nieuwe puzzels</span><span>€ 22,50</span></div>
       <div class="price-row"><span class="l">3 ingeleverd tegoed</span><span>− € 15,00</span></div>
       <div class="price-row"><span class="l">Jij betaalt</span><strong style="color:var(--red)">€ 7,50</strong></div>
-      <div class="aha">👉 Zo voelt ruilen: simpel en eerlijk</div>
+      <div class="aha">👉 Zo werkt het: kies, ruil en wij bezorgen</div>
     </div>
   </div>
 </section>
@@ -414,8 +419,7 @@ footer a{color:var(--yellow);text-decoration:none;}
 
     <div class="tradein-panel" id="inleveren">
       <div class="tradein-head">
-        <div class="th2">📦 Heb je puzzels liggen? Lever ze in voor tegoed</div>
-        <div class="tradein-hint">Optioneel — je kunt ook gewoon kiezen en later inleveren bij bezorging</div>
+        <div class="th2">📦 Heb je oude puzzels liggen? Lever ze in en ontvang geld terug</div>
       </div>
       <div class="tradein-body">
         <label class="field-lbl" for="tradeSelect">Welke puzzel lever je in?</label>
@@ -428,19 +432,17 @@ footer a{color:var(--yellow);text-decoration:none;}
         </div>
         <label class="field-lbl">Staat van de puzzel</label>
         <div class="cond-chips" id="condChips" role="group" aria-label="Staat kiezen">
-          <button class="chip c-ok active" data-val="5">✨ Prima — compleet &amp; rookvrij</button>
-          <button class="chip c-ok" data-val="4">👍 Goed — lichte slijtage</button>
-          <button class="chip c-warn" data-val="3">🙂 Oké — max. 5 stukjes mist</button>
-          <button class="chip c-bad" data-val="1.5">😬 Matig — rooklucht/beschadigd</button>
+          <button class="chip c-ok active" data-val="5">✨ Prima — compleet, onbeschadigd &amp; rookvrij</button>
+          <button class="chip c-ok" data-val="4">👍 Goed — compleet, licht beschadigd &amp; rookvrij</button>
+          <button class="chip c-warn" data-val="3">🙂 Oké — incompleet* of rooklucht<br><small style="font-weight:400;font-size:.72rem;">* max. 5 stukjes ontbreken</small></button>
         </div>
         <div class="est-inline">
           <div class="est-left">
             <div class="el tooltip-wrap">
               Je ontvangt als tegoed
               <span class="tooltip-icon">?</span>
-              <div class="tooltip-box">Het tegoed hangt af van de staat van de puzzel. Als ik deze puzzel al meerdere exemplaren van heb, bied ik iets minder — dit zie je direct bij de prijs.</div>
+              <div class="tooltip-box">Bij inname controleer ik de puzzel. Als de staat afwijkt van wat je opgaf, pas ik het tegoed aan.</div>
             </div>
-            <div class="en" id="estNote">95% van inleveringen krijgt dit bedrag</div>
           </div>
           <div class="est-val-wrap">
             <div class="est-val" id="estVal">€ 5,00</div>
@@ -483,16 +485,15 @@ footer a{color:var(--yellow);text-decoration:none;}
     <div class="how-sub">In vier stappen van oud naar nieuw.</div>
     <div class="steps">
       <div class="step"><div class="step-num">1</div><div class="step-ico">🔍</div><h4>Kies puzzels</h4><p>Blader door het aanbod en selecteer welke puzzels je wilt kopen.</p></div>
-      <div class="step"><div class="step-num">2</div><div class="step-ico">📦</div><h4>Lever in voor tegoed</h4><p>Ontdek hoeveel jouw puzzels waard zijn. Geef de staat op en zie direct het tegoed.</p></div>
+      <div class="step"><div class="step-num">2</div><div class="step-ico">📦</div><h4>Lever in voor tegoed</h4><p>Geef de staat van je puzzel op en zie direct hoeveel je terugkrijgt.</p></div>
       <div class="step"><div class="step-num">3</div><div class="step-ico">💰</div><h4>Betaal het verschil</h4><p>Tegoed gaat er direct af. Bijbetalen via Tikkie of contant.</p></div>
-      <div class="step"><div class="step-num">4</div><div class="step-ico">🚲</div><h4>Bezorgen of ophalen</h4><p>Ik breng ze graag bij je thuis in Haarlem.</p></div>
+      <div class="step"><div class="step-num">4</div><div class="step-ico">🚲</div><h4>Wij bezorgen bij jou thuis</h4><p>Ik breng ze op een afgesproken moment bij je thuis in Haarlem.</p></div>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>PuzzelRuil Haarlem — particulier initiatief voor Jan van Haasteren fans · <a href="mailto:hello@puzzelruil.nl">hello@puzzelruil.nl</a> · Actief in Haarlem sinds 2024</p>
-  <p style="margin-top:.3rem;font-size:.7rem;">Puzzels tweedehands · Geen commercieel bedrijf · 50+ tevreden ruilers</p>
+  <p>PuzzelRuil Haarlem — particulier initiatief voor Jan van Haasteren fans · <a href="mailto:hello@puzzelruil.nl">hello@puzzelruil.nl</a> · Actief in Haarlem sinds 2026</p>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -538,13 +539,14 @@ footer a{color:var(--yellow);text-decoration:none;}
         <button class="chip" data-t="20:00">20:00</button>
       </div>
       <button class="btn btn-green" id="confirmBtn" style="width:100%;justify-content:center;font-size:.9rem;">✅ Bevestigen</button>
+      <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:.6rem;">💳 Betalen doe je bij bezorging — contant of via Tikkie, wat jij fijner vindt.</p>
     </div>
 
     <!-- VIEW 2: Bevestiging -->
     <div id="successView" style="display:none;text-align:center;padding:.5rem 0;">
       <div style="font-size:3rem;margin-bottom:.4rem;">✅</div>
       <h4 style="font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--green-dark);margin-bottom:.3rem;">Geregeld!</h4>
-      <p style="font-size:.86rem;color:var(--muted);margin-bottom:1.1rem;">Je ontvangt binnen enkele minuten een bevestiging.</p>
+      <p style="font-size:.86rem;color:var(--muted);margin-bottom:1.1rem;">We nemen snel contact met je op!</p>
       <div id="confirmSummary" style="background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:.85rem 1rem;text-align:left;font-size:.84rem;line-height:1.8;color:var(--ink);"></div>
     </div>
 
@@ -872,10 +874,21 @@ function renderCart(){
   const content=document.getElementById('cartContent');
   const totals=document.getElementById('cartTotals');
   const bookBtn=document.getElementById('bookBtn');
-  if(!cart.length){
+
+  if(!cart.length && credit===0){
     content.innerHTML='<div class="cart-empty"><div class="ico">🧩</div><p><strong>Kies hierboven je eerste puzzel 👆</strong></p></div>';
     totals.style.display='none';bookBtn.disabled=true;return;
   }
+
+  if(!cart.length && credit>0){
+    content.innerHTML=`<div class="cart-empty">
+      <div class="ico">📦</div>
+      <p><strong>Tegoed: − ${fmt(credit)}</strong></p>
+      <p style="margin-top:.35rem;">Kies nog een puzzel om je tegoed te verzilveren 👆</p>
+    </div>`;
+    totals.style.display='none';bookBtn.disabled=true;return;
+  }
+
   content.innerHTML=cart.map(p=>{
     const url=imgUrl(p);
     const ciThumb=url
@@ -928,13 +941,46 @@ function showSuccessView(){
   document.getElementById('successView').style.display='block';
 }
 
+// Tijdslots als minuten na middernacht
+const ALL_SLOTS = [600,660,780,840,900,960,1140,1200]; // 10,11,13,14,15,16,19,20
+
+function availableSlotsForDay(year, month, day){
+  const now = new Date();
+  const slotDate = new Date(year, month, day);
+  const isToday = slotDate.toDateString() === now.toDateString();
+  if(!isToday) return ALL_SLOTS;
+  const nowMins = now.getHours()*60 + now.getMinutes();
+  return ALL_SLOTS.filter(s => s - nowMins >= 240); // min 4 uur vooruit
+}
+
+function dayHasSlots(year, month, day){
+  return availableSlotsForDay(year, month, day).length > 0;
+}
 function initCal(){
   const now=new Date();
   calYear=now.getFullYear();
   calMonth=now.getMonth();
   calSelDay=null;selTime=null;
   renderCal();
-  document.querySelectorAll('#timeChips .chip').forEach(c=>c.classList.remove('active'));
+  renderTimeChips();
+}
+
+function renderTimeChips(){
+  const slots = calSelDay ? availableSlotsForDay(calYear, calMonth, calSelDay) : ALL_SLOTS;
+  const toLabel = m => `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+  document.getElementById('timeChips').innerHTML = ALL_SLOTS.map(s => {
+    const avail = slots.includes(s);
+    const lbl = toLabel(s);
+    return `<button class="chip${!avail?' chip-disabled':''}" data-t="${lbl}" ${!avail?'disabled':''}>${lbl}</button>`;
+  }).join('');
+  // herverbind click
+  document.getElementById('timeChips').querySelectorAll('.chip:not(.chip-disabled)').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#timeChips .chip').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      selTime=btn.dataset.t;
+    });
+  });
 }
 
 function renderCal(){
@@ -956,9 +1002,10 @@ function renderCal(){
     const dow=date.getDay();
     const isPast=date<now;
     const isSat=dow===6;
+    const noSlots=!isPast&&!isSat&&!dayHasSlots(calYear,calMonth,d);
     const isSel=calSelDay===d;
     const isToday=date.getTime()===now.getTime();
-    const isBlocked=isPast||isSat;
+    const isBlocked=isPast||isSat||noSlots;
     let cls='cal-day';
     if(isBlocked)cls+=' cal-past';
     if(isSel&&!isBlocked)cls+=' cal-sel';
@@ -974,12 +1021,17 @@ function renderCal(){
     e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();
   });
   document.querySelectorAll('#miniCal .cal-day:not(.cal-past):not(.cal-empty)').forEach(el=>{
-    el.addEventListener('click',()=>{calSelDay=+el.dataset.day;renderCal();});
+    el.addEventListener('click',()=>{
+      calSelDay=+el.dataset.day;
+      selTime=null;
+      renderCal();
+      renderTimeChips();
+    });
   });
 }
 
 document.getElementById('timeChips').addEventListener('click',e=>{
-  const btn=e.target.closest('[data-t]');if(!btn)return;
+  const btn=e.target.closest('[data-t]');if(!btn||btn.disabled)return;
   document.querySelectorAll('#timeChips .chip').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
   selTime=btn.dataset.t;
